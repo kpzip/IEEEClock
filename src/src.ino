@@ -1,6 +1,8 @@
 #include <Wire.h>
 #include <RTClib.h>
 
+const DateTime compileTime(F(__DATE__), F(__TIME__));
+
 RTC_DS1307 rtc; // DS1307 I2C address
 
 void setup() {
@@ -19,6 +21,12 @@ void setup() {
 }
 
 void loop() {
+
+  // For each segment
+  for (int i = 0; i < 8; i++) {
+
+  }
+
   DateTime now = rtc.now();
 
   Serial.print("Current Time: ");
