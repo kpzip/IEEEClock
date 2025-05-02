@@ -30,3 +30,15 @@
 *.exe
 *.out
 *.app
+
+# kicad
+*.bak
+**/clock-backups/*
+**/output/*
+*.gbr
+*.drl
+*.gbrjob
+*.lck
+\#auto_saved_files\#
+*.kicad_prl
+fp-info-cache
