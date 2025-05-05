@@ -1132,6 +1132,196 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "Connector:Conn_PIC_ICSP_ICD"
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "J"
+				(at 6.35 8.89 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "Conn_PIC_ICSP_ICD"
+				(at -8.89 -1.27 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 1.27 3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "http://ww1.microchip.com/downloads/en/devicedoc/30277d.pdf"
+				(at -7.62 -3.81 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Microchip PIC In-Circuit Serial Programming/Debugging (ICSP/ICD) connector"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "icsp icd pic microchip"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "PinHeader*1x06*P2.54mm* PinSocket*1x06*P2.54mm*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "Conn_PIC_ICSP_ICD_0_1"
+				(rectangle
+					(start -7.62 7.62)
+					(end 10.16 -7.62)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+			)
+			(symbol "Conn_PIC_ICSP_ICD_1_1"
+				(pin passive line
+					(at -5.08 10.16 270)
+					(length 2.54)
+					(name "VDD"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at -5.08 -10.16 90)
+					(length 2.54)
+					(name "VSS"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 12.7 5.08 180)
+					(length 2.54)
+					(name "~{MCLR}/VPP"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 12.7 0 180)
+					(length 2.54)
+					(name "PGD/ICSPDAT"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at 12.7 -2.54 180)
+					(length 2.54)
+					(name "PGC/ICSPCLK"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin output line
+					(at 12.7 -5.08 180)
+					(length 2.54)
+					(name "PGM/LVP"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "Device:Battery_Cell"
 			(pin_numbers
 				(hide yes)
@@ -1785,6 +1975,156 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "Device:D_Zener"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "D"
+				(at 0 2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "D_Zener"
+				(at 0 -2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Zener diode"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "diode"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "TO-???* *_Diode_* *SingleDiode* D_*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "D_Zener_0_1"
+				(polyline
+					(pts
+						(xy -1.27 -1.27) (xy -1.27 1.27) (xy -0.762 1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 0) (xy -1.27 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 -1.27) (xy 1.27 1.27) (xy -1.27 0) (xy 1.27 -1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "D_Zener_1_1"
+				(pin passive line
+					(at -3.81 0 0)
+					(length 2.54)
+					(name "K"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 3.81 0 180)
+					(length 2.54)
+					(name "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "Device:LED"
 			(pin_numbers
 				(hide yes)
@@ -1958,398 +2298,6 @@
 						)
 					)
 					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "Device:Q_NPN"
-			(pin_numbers
-				(hide yes)
-			)
-			(pin_names
-				(offset 0)
-				(hide yes)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "Q"
-				(at 5.08 1.27 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Value" "Q_NPN"
-				(at 5.08 -1.27 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Footprint" ""
-				(at 5.08 2.54 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "~"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "NPN bipolar junction transistor"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "BJT"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "Q_NPN_0_1"
-				(polyline
-					(pts
-						(xy -2.54 0) (xy 0.635 0)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0.635 1.905) (xy 0.635 -1.905)
-					)
-					(stroke
-						(width 0.508)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0.635 0.635) (xy 2.54 2.54)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0.635 -0.635) (xy 2.54 -2.54)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center 1.27 0)
-					(radius 2.8194)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 1.27 -1.778) (xy 1.778 -1.27) (xy 2.286 -2.286) (xy 1.27 -1.778)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-			)
-			(symbol "Q_NPN_1_1"
-				(pin input line
-					(at -5.08 0 0)
-					(length 2.54)
-					(name "B"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "B"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 2.54 5.08 270)
-					(length 2.54)
-					(name "C"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "C"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 2.54 -5.08 90)
-					(length 2.54)
-					(name "E"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "E"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "Device:Q_PNP"
-			(pin_numbers
-				(hide yes)
-			)
-			(pin_names
-				(offset 0)
-				(hide yes)
-			)
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "Q"
-				(at 5.08 1.27 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Value" "Q_PNP"
-				(at 5.08 -1.27 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(justify left)
-				)
-			)
-			(property "Footprint" ""
-				(at 5.08 2.54 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "~"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "PNP bipolar junction transistor"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "BJT"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "Q_PNP_0_1"
-				(polyline
-					(pts
-						(xy -2.54 0) (xy 0.635 0)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0.635 1.905) (xy 0.635 -1.905)
-					)
-					(stroke
-						(width 0.508)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0.635 0.635) (xy 2.54 2.54)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 0.635 -0.635) (xy 2.54 -2.54)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(circle
-					(center 1.27 0)
-					(radius 2.8194)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy 2.286 -1.778) (xy 1.778 -2.286) (xy 1.27 -1.27) (xy 2.286 -1.778)
-					)
-					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type outline)
-					)
-				)
-			)
-			(symbol "Q_PNP_1_1"
-				(pin input line
-					(at -5.08 0 0)
-					(length 2.54)
-					(name "B"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "B"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 2.54 5.08 270)
-					(length 2.54)
-					(name "C"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "C"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 2.54 -5.08 90)
-					(length 2.54)
-					(name "E"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "E"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -4338,6 +4286,392 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "Transistor_BJT:Q_NPN_EBC"
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "Q"
+				(at 5.08 1.27 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "Q_NPN_EBC"
+				(at 5.08 -1.27 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" ""
+				(at 5.08 2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "NPN transistor, emitter/base/collector"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "BJT"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "Q_NPN_EBC_0_1"
+				(polyline
+					(pts
+						(xy -2.54 0) (xy 0.635 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.635 1.905) (xy 0.635 -1.905)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 1.27 0)
+					(radius 2.8194)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "Q_NPN_EBC_1_1"
+				(polyline
+					(pts
+						(xy 0.635 0.635) (xy 2.54 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.635 -0.635) (xy 2.54 -2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 -1.778) (xy 1.778 -1.27) (xy 2.286 -2.286) (xy 1.27 -1.778)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+				(pin input line
+					(at -5.08 0 0)
+					(length 2.54)
+					(name "B"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 5.08 270)
+					(length 2.54)
+					(name "C"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 -5.08 90)
+					(length 2.54)
+					(name "E"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
+		(symbol "Transistor_BJT:Q_PNP_BCE"
+			(pin_names
+				(offset 0)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "Q"
+				(at 5.08 1.27 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "Q_PNP_BCE"
+				(at 5.08 -1.27 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" ""
+				(at 5.08 2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "PNP transistor, base/collector/emitter"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "BJT"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "Q_PNP_BCE_0_1"
+				(polyline
+					(pts
+						(xy -2.54 0) (xy 0.635 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.635 1.905) (xy 0.635 -1.905)
+					)
+					(stroke
+						(width 0.508)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.635 0.635) (xy 2.54 2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0.635 -0.635) (xy 2.54 -2.54)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 1.27 0)
+					(radius 2.8194)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.286 -1.778) (xy 1.778 -2.286) (xy 1.27 -1.27) (xy 2.286 -1.778)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+			)
+			(symbol "Q_PNP_BCE_1_1"
+				(pin input line
+					(at -5.08 0 0)
+					(length 2.54)
+					(name "B"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 5.08 270)
+					(length 2.54)
+					(name "C"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 2.54 -5.08 90)
+					(length 2.54)
+					(name "E"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "power:GND"
 			(power)
 			(pin_numbers
@@ -4710,6 +5044,10 @@
 		(uuid "84148395-afe4-4f8e-83e2-f93e556b2343")
 	)
 	(no_connect
+		(at 394.97 334.01)
+		(uuid "88a442f9-9fc5-4e88-a73b-399db0231f92")
+	)
+	(no_connect
 		(at 308.61 323.85)
 		(uuid "97cb62ae-d48c-4077-b02e-cf6690ac4f8f")
 	)
@@ -4727,7 +5065,7 @@
 	)
 	(wire
 		(pts
-			(xy 381 331.47) (xy 377.19 331.47)
+			(xy 377.19 331.47) (xy 384.81 331.47)
 		)
 		(stroke
 			(width 0)
@@ -5387,6 +5725,16 @@
 	)
 	(wire
 		(pts
+			(xy 398.78 328.93) (xy 394.97 328.93)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "18994ad6-73bd-4792-9402-d3692153500e")
+	)
+	(wire
+		(pts
 			(xy 398.78 256.54) (xy 398.78 266.7)
 		)
 		(stroke
@@ -6007,6 +6355,16 @@
 	)
 	(wire
 		(pts
+			(xy 410.21 323.85) (xy 410.21 328.93)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "28b61d7b-e1c7-4307-a74d-db67e05e739f")
+	)
+	(wire
+		(pts
 			(xy 90.17 154.94) (xy 90.17 160.02)
 		)
 		(stroke
@@ -6204,6 +6562,16 @@
 			(type default)
 		)
 		(uuid "2dfed1a4-6f00-48e4-8744-97479e89ac5e")
+	)
+	(wire
+		(pts
+			(xy 443.23 302.26) (xy 443.23 306.07)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2e4a2adf-5ae0-40a8-ba1b-48fd0d6ee22b")
 	)
 	(wire
 		(pts
@@ -7684,6 +8052,16 @@
 			(type default)
 		)
 		(uuid "5ee83aa2-d83f-4bb1-aff4-f67eebb06e74")
+	)
+	(wire
+		(pts
+			(xy 410.21 336.55) (xy 410.21 340.36)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5f735c82-0afd-4a52-a739-a2fc29554e19")
 	)
 	(wire
 		(pts
@@ -9637,6 +10015,16 @@
 	)
 	(wire
 		(pts
+			(xy 398.78 323.85) (xy 398.78 328.93)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9b9ec934-9267-4f31-81e5-b664b3e829fa")
+	)
+	(wire
+		(pts
 			(xy 184.15 405.13) (xy 189.23 405.13)
 		)
 		(stroke
@@ -9834,16 +10222,6 @@
 			(type default)
 		)
 		(uuid "9fe12502-4634-43d0-b712-4fb7912f7b40")
-	)
-	(wire
-		(pts
-			(xy 381 327.66) (xy 381 331.47)
-		)
-		(stroke
-			(width 0)
-			(type default)
-		)
-		(uuid "9fe4d8c2-d245-4051-88b2-f1918eead774")
 	)
 	(wire
 		(pts
@@ -13014,6 +13392,16 @@
 			(type default)
 		)
 		(uuid "f8c395e2-32a4-4600-84bd-802e35e98abc")
+	)
+	(wire
+		(pts
+			(xy 443.23 278.13) (xy 443.23 281.94)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f96087da-cd4d-4aaa-8193-b9e253187ef2")
 	)
 	(wire
 		(pts
@@ -25203,7 +25591,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:Q_PNP")
+		(lib_id "Transistor_BJT:Q_PNP_BCE")
 		(at 73.66 49.53 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -25221,7 +25609,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "Q_PNP"
+		(property "Value" "TIP127"
 			(at 78.74 50.7999 0)
 			(effects
 				(font
@@ -25248,7 +25636,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "PNP bipolar junction transistor"
+		(property "Description" "PNP transistor, base/collector/emitter"
 			(at 73.66 49.53 0)
 			(effects
 				(font
@@ -25257,13 +25645,13 @@
 				(hide yes)
 			)
 		)
-		(pin "E"
+		(pin "3"
 			(uuid "4751db1e-459f-4ffb-a9ad-4321521dfa92")
 		)
-		(pin "C"
+		(pin "1"
 			(uuid "358f4b6b-a666-4971-b29e-43ad99e084de")
 		)
-		(pin "B"
+		(pin "2"
 			(uuid "88168a35-a6e5-4147-9728-384f6d3a5336")
 		)
 		(instances
@@ -25277,7 +25665,7 @@
 	)
 	(symbol
 		(lib_id "power:VCC")
-		(at 381 327.66 0)
+		(at 398.78 323.85 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -25285,7 +25673,7 @@
 		(dnp no)
 		(uuid "069c047c-0f3f-46be-8687-dada7861ec0d")
 		(property "Reference" "#PWR059"
-			(at 381 331.47 0)
+			(at 398.78 327.66 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -25294,7 +25682,7 @@
 			)
 		)
 		(property "Value" "VCC"
-			(at 381 324.104 0)
+			(at 398.78 320.294 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -25302,7 +25690,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 381 327.66 0)
+			(at 398.78 323.85 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -25311,7 +25699,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 381 327.66 0)
+			(at 398.78 323.85 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -25320,7 +25708,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"VCC\""
-			(at 381 327.66 0)
+			(at 398.78 323.85 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -25432,7 +25820,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Display_7Segment:DA56-11CGKWA"
+		(property "Footprint" "Parts:DIPS2200W51P254L3580H1000Q18N"
 			(at 550.418 499.11 0)
 			(effects
 				(font
@@ -25593,6 +25981,72 @@
 		)
 	)
 	(symbol
+		(lib_id "power:GND")
+		(at 443.23 306.07 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "0975803c-a6c4-4a96-a446-8573ab329942")
+		(property "Reference" "#PWR088"
+			(at 443.23 312.42 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 443.23 311.15 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 443.23 306.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 443.23 306.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 443.23 306.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "ab594089-d903-4e9f-8825-90d5b272ddc6")
+		)
+		(instances
+			(project "clock"
+				(path "/81fe6255-7db2-4e1e-90bf-860defad696b"
+					(reference "#PWR088")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:R_US")
 		(at 325.12 46.99 0)
 		(unit 1)
@@ -25689,7 +26143,7 @@
 				(justify left)
 			)
 		)
-		(property "Footprint" "Connector_PinSocket_1.00mm:PinSocket_1x04_P1.00mm_Vertical"
+		(property "Footprint" "Connector_PinSocket_2.54mm:PinSocket_1x05_P2.54mm_Vertical"
 			(at 568.96 335.28 0)
 			(effects
 				(font
@@ -25741,7 +26195,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:Q_NPN")
+		(lib_id "Transistor_BJT:Q_NPN_EBC")
 		(at 149.86 276.86 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -25750,7 +26204,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "0d737f2d-cda3-4f73-ac40-cb7434945976")
-		(property "Reference" "Q31"
+		(property "Reference" "Q36"
 			(at 154.94 275.5899 0)
 			(effects
 				(font
@@ -25786,7 +26240,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "NPN bipolar junction transistor"
+		(property "Description" "NPN transistor, emitter/base/collector"
 			(at 149.86 276.86 0)
 			(effects
 				(font
@@ -25795,19 +26249,19 @@
 				(hide yes)
 			)
 		)
-		(pin "C"
+		(pin "1"
 			(uuid "ad6b9017-dc4c-48cb-9848-0d75da0633f3")
 		)
-		(pin "E"
+		(pin "3"
 			(uuid "c836ef6c-dc76-42dc-95de-9f4c8b5b44ed")
 		)
-		(pin "B"
+		(pin "2"
 			(uuid "9dbae3c8-65cb-4bce-be4c-86ce94172b0a")
 		)
 		(instances
 			(project "clock"
 				(path "/81fe6255-7db2-4e1e-90bf-860defad696b"
-					(reference "Q31")
+					(reference "Q36")
 					(unit 1)
 				)
 			)
@@ -25884,7 +26338,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:Q_NPN")
+		(lib_id "Transistor_BJT:Q_NPN_EBC")
 		(at 73.66 224.79 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -25893,7 +26347,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "0e388366-e4f3-42ac-a0be-2512975945f1")
-		(property "Reference" "Q24"
+		(property "Reference" "Q25"
 			(at 78.74 223.5199 0)
 			(effects
 				(font
@@ -25929,7 +26383,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "NPN bipolar junction transistor"
+		(property "Description" "NPN transistor, emitter/base/collector"
 			(at 73.66 224.79 0)
 			(effects
 				(font
@@ -25938,19 +26392,19 @@
 				(hide yes)
 			)
 		)
-		(pin "C"
+		(pin "2"
 			(uuid "aabb91b5-3a89-41e1-944f-60efe6fcf976")
 		)
-		(pin "E"
+		(pin "3"
 			(uuid "371a361e-620f-4452-bcd3-15410fc693d5")
 		)
-		(pin "B"
+		(pin "1"
 			(uuid "9a4dc67c-3931-4fcc-b684-51c405d7aff7")
 		)
 		(instances
 			(project "clock"
 				(path "/81fe6255-7db2-4e1e-90bf-860defad696b"
-					(reference "Q24")
+					(reference "Q25")
 					(unit 1)
 				)
 			)
@@ -26069,7 +26523,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:Q_NPN")
+		(lib_id "Transistor_BJT:Q_NPN_EBC")
 		(at 175.26 171.45 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -26078,7 +26532,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "10270411-08f9-4bd9-920f-6ff1ccaaaf20")
-		(property "Reference" "Q20"
+		(property "Reference" "Q21"
 			(at 180.34 170.1799 0)
 			(effects
 				(font
@@ -26114,7 +26568,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "NPN bipolar junction transistor"
+		(property "Description" "NPN transistor, emitter/base/collector"
 			(at 175.26 171.45 0)
 			(effects
 				(font
@@ -26123,19 +26577,19 @@
 				(hide yes)
 			)
 		)
-		(pin "C"
+		(pin "3"
 			(uuid "87c18209-05a8-4d44-ab3b-a143c36fe1c0")
 		)
-		(pin "E"
+		(pin "2"
 			(uuid "39ee63ed-9d04-4556-bf04-f958ee341220")
 		)
-		(pin "B"
+		(pin "1"
 			(uuid "0044405f-6162-4401-a243-1b1b17e490f5")
 		)
 		(instances
 			(project "clock"
 				(path "/81fe6255-7db2-4e1e-90bf-860defad696b"
-					(reference "Q20")
+					(reference "Q21")
 					(unit 1)
 				)
 			)
@@ -26215,7 +26669,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:Q_NPN")
+		(lib_id "Transistor_BJT:Q_NPN_EBC")
 		(at 149.86 328.93 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -26224,7 +26678,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "11157724-ad95-414d-864e-764f467bc87f")
-		(property "Reference" "Q43"
+		(property "Reference" "Q44"
 			(at 154.94 327.6599 0)
 			(effects
 				(font
@@ -26260,7 +26714,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "NPN bipolar junction transistor"
+		(property "Description" "NPN transistor, emitter/base/collector"
 			(at 149.86 328.93 0)
 			(effects
 				(font
@@ -26269,19 +26723,19 @@
 				(hide yes)
 			)
 		)
-		(pin "C"
+		(pin "2"
 			(uuid "15ca091d-5167-474b-b01e-99331c365a4a")
 		)
-		(pin "E"
+		(pin "3"
 			(uuid "6a9561b6-94ce-4f4f-bf79-ecb85e91c79a")
 		)
-		(pin "B"
+		(pin "1"
 			(uuid "d4cbb605-26a4-420e-b311-8909f32b8265")
 		)
 		(instances
 			(project "clock"
 				(path "/81fe6255-7db2-4e1e-90bf-860defad696b"
-					(reference "Q43")
+					(reference "Q44")
 					(unit 1)
 				)
 			)
@@ -26561,7 +27015,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:Q_NPN")
+		(lib_id "Transistor_BJT:Q_NPN_EBC")
 		(at 200.66 224.79 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -26570,7 +27024,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "18ade653-ef71-48d1-ba78-dae567e07117")
-		(property "Reference" "Q34"
+		(property "Reference" "Q30"
 			(at 205.74 223.5199 0)
 			(effects
 				(font
@@ -26606,7 +27060,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "NPN bipolar junction transistor"
+		(property "Description" "NPN transistor, emitter/base/collector"
 			(at 200.66 224.79 0)
 			(effects
 				(font
@@ -26615,19 +27069,19 @@
 				(hide yes)
 			)
 		)
-		(pin "C"
+		(pin "2"
 			(uuid "06d3e8f3-e89e-49be-a735-2e23729498a7")
 		)
-		(pin "E"
+		(pin "1"
 			(uuid "2f28d424-4b84-4048-83a1-a18be64be61d")
 		)
-		(pin "B"
+		(pin "3"
 			(uuid "607a2852-4d61-4052-b304-9704f9fd6ee5")
 		)
 		(instances
 			(project "clock"
 				(path "/81fe6255-7db2-4e1e-90bf-860defad696b"
-					(reference "Q34")
+					(reference "Q30")
 					(unit 1)
 				)
 			)
@@ -26699,7 +27153,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:Q_NPN")
+		(lib_id "Transistor_BJT:Q_NPN_EBC")
 		(at 251.46 224.79 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -26708,7 +27162,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "198df886-5d8b-4897-807b-f1b1809df635")
-		(property "Reference" "Q38"
+		(property "Reference" "Q32"
 			(at 256.54 223.5199 0)
 			(effects
 				(font
@@ -26744,7 +27198,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "NPN bipolar junction transistor"
+		(property "Description" "NPN transistor, emitter/base/collector"
 			(at 251.46 224.79 0)
 			(effects
 				(font
@@ -26753,19 +27207,19 @@
 				(hide yes)
 			)
 		)
-		(pin "C"
+		(pin "1"
 			(uuid "4a10b525-a657-4d28-b9c8-188e8da2ba94")
 		)
-		(pin "E"
+		(pin "3"
 			(uuid "0f8a7fb3-d8eb-448a-8c2a-3f32c73d54cd")
 		)
-		(pin "B"
+		(pin "2"
 			(uuid "e3bf01bb-5c7e-46ad-8203-4307ec211bdd")
 		)
 		(instances
 			(project "clock"
 				(path "/81fe6255-7db2-4e1e-90bf-860defad696b"
-					(reference "Q38")
+					(reference "Q32")
 					(unit 1)
 				)
 			)
@@ -26937,7 +27391,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Display_7Segment:DA56-11CGKWA"
+		(property "Footprint" "Parts:DIPS2200W51P254L3580H1000Q18N"
 			(at 643.128 499.11 0)
 			(effects
 				(font
@@ -27168,7 +27622,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:Q_NPN")
+		(lib_id "Transistor_BJT:Q_NPN_EBC")
 		(at 149.86 224.79 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -27177,7 +27631,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "20bb4589-3749-458b-a7ed-fa423a8d885f")
-		(property "Reference" "Q30"
+		(property "Reference" "Q28"
 			(at 154.94 223.5199 0)
 			(effects
 				(font
@@ -27213,7 +27667,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "NPN bipolar junction transistor"
+		(property "Description" "NPN transistor, emitter/base/collector"
 			(at 149.86 224.79 0)
 			(effects
 				(font
@@ -27222,19 +27676,19 @@
 				(hide yes)
 			)
 		)
-		(pin "C"
+		(pin "1"
 			(uuid "680e5c3a-bf47-4191-ab99-7f60b6a82afa")
 		)
-		(pin "E"
+		(pin "2"
 			(uuid "65273f19-2de1-49d5-bf18-5278f0553dbe")
 		)
-		(pin "B"
+		(pin "3"
 			(uuid "a6104abd-913a-465e-b687-94113274fe6d")
 		)
 		(instances
 			(project "clock"
 				(path "/81fe6255-7db2-4e1e-90bf-860defad696b"
-					(reference "Q30")
+					(reference "Q28")
 					(unit 1)
 				)
 			)
@@ -27521,7 +27975,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:Q_NPN")
+		(lib_id "Transistor_BJT:Q_NPN_EBC")
 		(at 99.06 328.93 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -27530,7 +27984,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "25f1f3ae-e24d-44c2-b996-851dd6b90610")
-		(property "Reference" "Q41"
+		(property "Reference" "Q42"
 			(at 104.14 327.6599 0)
 			(effects
 				(font
@@ -27566,7 +28020,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "NPN bipolar junction transistor"
+		(property "Description" "NPN transistor, emitter/base/collector"
 			(at 99.06 328.93 0)
 			(effects
 				(font
@@ -27575,19 +28029,19 @@
 				(hide yes)
 			)
 		)
-		(pin "C"
+		(pin "1"
 			(uuid "0b51177b-8188-48ee-a076-4a7200fd82b9")
 		)
-		(pin "E"
+		(pin "3"
 			(uuid "f50338f2-0edb-4cb0-9598-98a7eaa2f356")
 		)
-		(pin "B"
+		(pin "2"
 			(uuid "014ca1eb-4464-4438-b84e-321a80f19410")
 		)
 		(instances
 			(project "clock"
 				(path "/81fe6255-7db2-4e1e-90bf-860defad696b"
-					(reference "Q41")
+					(reference "Q42")
 					(unit 1)
 				)
 			)
@@ -27730,7 +28184,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:Q_PNP")
+		(lib_id "Transistor_BJT:Q_PNP_BCE")
 		(at 203.2 49.53 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -27748,7 +28202,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "Q_PNP"
+		(property "Value" "TIP127"
 			(at 208.28 50.7999 0)
 			(effects
 				(font
@@ -27775,7 +28229,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "PNP bipolar junction transistor"
+		(property "Description" "PNP transistor, base/collector/emitter"
 			(at 203.2 49.53 0)
 			(effects
 				(font
@@ -27784,13 +28238,13 @@
 				(hide yes)
 			)
 		)
-		(pin "E"
+		(pin "1"
 			(uuid "f01a1c99-a246-4fa0-bd0a-53c6732c5a10")
 		)
-		(pin "C"
+		(pin "3"
 			(uuid "fddbcbc2-6cfe-44a9-83eb-09abaa35bf6e")
 		)
-		(pin "B"
+		(pin "2"
 			(uuid "4e90f78f-a4e2-42ab-b399-a8b3d612139f")
 		)
 		(instances
@@ -27803,7 +28257,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:Q_NPN")
+		(lib_id "Transistor_BJT:Q_NPN_EBC")
 		(at 251.46 276.86 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -27812,7 +28266,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "28d8ca8a-c942-49c9-a3b3-f12a50001943")
-		(property "Reference" "Q39"
+		(property "Reference" "Q40"
 			(at 256.54 275.5899 0)
 			(effects
 				(font
@@ -27848,7 +28302,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "NPN bipolar junction transistor"
+		(property "Description" "NPN transistor, emitter/base/collector"
 			(at 251.46 276.86 0)
 			(effects
 				(font
@@ -27857,19 +28311,19 @@
 				(hide yes)
 			)
 		)
-		(pin "C"
+		(pin "3"
 			(uuid "aa24855a-8a78-43f7-8e94-1df19cb5f52a")
 		)
-		(pin "E"
+		(pin "2"
 			(uuid "bcd007d9-d157-48d6-bfab-e23109b33b0d")
 		)
-		(pin "B"
+		(pin "1"
 			(uuid "b0e8e0fb-6d2e-4097-b068-a6e801b49cff")
 		)
 		(instances
 			(project "clock"
 				(path "/81fe6255-7db2-4e1e-90bf-860defad696b"
-					(reference "Q39")
+					(reference "Q40")
 					(unit 1)
 				)
 			)
@@ -28216,6 +28670,77 @@
 		)
 	)
 	(symbol
+		(lib_id "Switch:SW_SPDT")
+		(at 389.89 331.47 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "3142bbce-891e-450d-ab17-6ebfab9889d8")
+		(property "Reference" "SW8"
+			(at 389.89 322.58 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "Power"
+			(at 389.89 325.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "Button_Switch_THT:SW_Slide-03_Wuerth-WS-SLTV_10x2.5x6.4_P2.54mm"
+			(at 389.89 331.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 389.89 339.09 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Switch, single pole double throw"
+			(at 389.89 331.47 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "4a0d2ab9-faa6-46dc-a6c2-4cefe88ae617")
+		)
+		(pin "3"
+			(uuid "838ba6f3-8462-495f-88d7-f14cabbfb8ad")
+		)
+		(pin "1"
+			(uuid "f7ebc061-beb9-45df-830a-25292420eda3")
+		)
+		(instances
+			(project "clock"
+				(path "/81fe6255-7db2-4e1e-90bf-860defad696b"
+					(reference "SW8")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Display_Character:DC56-11CGKWA")
 		(at 168.91 400.05 0)
 		(unit 1)
@@ -28241,7 +28766,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Display_7Segment:DA56-11CGKWA"
+		(property "Footprint" "Parts:DIPS2200W51P254L3580H1000Q18N"
 			(at 169.418 416.56 0)
 			(effects
 				(font
@@ -28332,7 +28857,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:Q_NPN")
+		(lib_id "Transistor_BJT:Q_NPN_EBC")
 		(at 200.66 119.38 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -28341,7 +28866,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "3230e14a-e7ec-4ebf-b0d7-fc7a785d6d48")
-		(property "Reference" "Q13"
+		(property "Reference" "Q14"
 			(at 205.74 118.1099 0)
 			(effects
 				(font
@@ -28377,7 +28902,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "NPN bipolar junction transistor"
+		(property "Description" "NPN transistor, emitter/base/collector"
 			(at 200.66 119.38 0)
 			(effects
 				(font
@@ -28386,19 +28911,19 @@
 				(hide yes)
 			)
 		)
-		(pin "C"
+		(pin "2"
 			(uuid "84d2d9a9-2587-44e4-bc17-10de3f1e45d3")
 		)
-		(pin "E"
+		(pin "1"
 			(uuid "12d3ca4b-10cf-4b99-8c9b-4c72a14af385")
 		)
-		(pin "B"
+		(pin "3"
 			(uuid "465785ff-4d51-4dd7-9da8-e1935591b1d3")
 		)
 		(instances
 			(project "clock"
 				(path "/81fe6255-7db2-4e1e-90bf-860defad696b"
-					(reference "Q13")
+					(reference "Q14")
 					(unit 1)
 				)
 			)
@@ -28562,7 +29087,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Display_7Segment:DA56-11CGKWA"
+		(property "Footprint" "Parts:DIPS2200W51P254L3580H1000Q18N"
 			(at 105.918 461.01 0)
 			(effects
 				(font
@@ -28653,7 +29178,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:Q_PNP")
+		(lib_id "Transistor_BJT:Q_PNP_BCE")
 		(at 181.61 49.53 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -28671,7 +29196,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "Q_PNP"
+		(property "Value" "TIP127"
 			(at 186.69 50.7999 0)
 			(effects
 				(font
@@ -28698,7 +29223,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "PNP bipolar junction transistor"
+		(property "Description" "PNP transistor, base/collector/emitter"
 			(at 181.61 49.53 0)
 			(effects
 				(font
@@ -28707,13 +29232,13 @@
 				(hide yes)
 			)
 		)
-		(pin "E"
+		(pin "2"
 			(uuid "54b7e0e7-c118-41a1-a53f-0eb7a759b8a3")
 		)
-		(pin "C"
+		(pin "1"
 			(uuid "6154d8a7-12bb-4c04-b315-2df12de8051f")
 		)
-		(pin "B"
+		(pin "3"
 			(uuid "2020c641-5b50-408d-ab02-42238eb9e6fe")
 		)
 		(instances
@@ -29272,7 +29797,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:Q_NPN")
+		(lib_id "Transistor_BJT:Q_NPN_EBC")
 		(at 200.66 328.93 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -29281,7 +29806,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "40c88ab1-7c98-47e5-9e39-53122de91efc")
-		(property "Reference" "Q45"
+		(property "Reference" "Q46"
 			(at 205.74 327.6599 0)
 			(effects
 				(font
@@ -29317,7 +29842,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "NPN bipolar junction transistor"
+		(property "Description" "NPN transistor, emitter/base/collector"
 			(at 200.66 328.93 0)
 			(effects
 				(font
@@ -29326,19 +29851,19 @@
 				(hide yes)
 			)
 		)
-		(pin "C"
+		(pin "3"
 			(uuid "129f9b0c-f40f-492b-9e9b-44bd2b4b5425")
 		)
-		(pin "E"
+		(pin "1"
 			(uuid "49c5ffce-e92a-46c2-a277-1b2cb339a0cd")
 		)
-		(pin "B"
+		(pin "2"
 			(uuid "16dc0203-1237-4961-a2c2-4b96faf9dcc6")
 		)
 		(instances
 			(project "clock"
 				(path "/81fe6255-7db2-4e1e-90bf-860defad696b"
-					(reference "Q45")
+					(reference "Q46")
 					(unit 1)
 				)
 			)
@@ -29440,7 +29965,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Display_7Segment:DA56-11CGKWA"
+		(property "Footprint" "Parts:DIPS2200W51P254L3580H1000Q18N"
 			(at 550.418 461.01 0)
 			(effects
 				(font
@@ -29847,7 +30372,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:Q_NPN")
+		(lib_id "Transistor_BJT:Q_NPN_EBC")
 		(at 149.86 171.45 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -29856,7 +30381,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "46260cab-5328-4150-8dff-ff7337c4b22d")
-		(property "Reference" "Q19"
+		(property "Reference" "Q20"
 			(at 154.94 170.1799 0)
 			(effects
 				(font
@@ -29892,7 +30417,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "NPN bipolar junction transistor"
+		(property "Description" "NPN transistor, emitter/base/collector"
 			(at 149.86 171.45 0)
 			(effects
 				(font
@@ -29901,19 +30426,19 @@
 				(hide yes)
 			)
 		)
-		(pin "C"
+		(pin "2"
 			(uuid "e516a2e6-0263-4477-bef4-ce3650cee928")
 		)
-		(pin "E"
+		(pin "1"
 			(uuid "3f3aeb02-f352-40f1-b05c-11495b8d7334")
 		)
-		(pin "B"
+		(pin "3"
 			(uuid "78cfe788-a1a1-43cc-8c45-c6c3c5d82f97")
 		)
 		(instances
 			(project "clock"
 				(path "/81fe6255-7db2-4e1e-90bf-860defad696b"
-					(reference "Q19")
+					(reference "Q20")
 					(unit 1)
 				)
 			)
@@ -29945,7 +30470,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Display_7Segment:DA56-11CGKWA"
+		(property "Footprint" "Parts:DIPS2200W51P254L3580H1000Q18N"
 			(at 550.418 416.56 0)
 			(effects
 				(font
@@ -30131,7 +30656,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Display_7Segment:DA56-11CGKWA"
+		(property "Footprint" "Parts:DIPS2200W51P254L3580H1000Q18N"
 			(at 170.688 461.01 0)
 			(effects
 				(font
@@ -30317,7 +30842,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Connector_PinHeader_1.00mm:PinHeader_1x04_P1.00mm_Vertical"
+		(property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x05_P2.54mm_Vertical"
 			(at 586.74 335.28 0)
 			(effects
 				(font
@@ -30641,6 +31166,76 @@
 		)
 	)
 	(symbol
+		(lib_id "Device:D_Zener")
+		(at 410.21 332.74 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "4dda2d19-2886-4521-b29b-ab63ed3c2d93")
+		(property "Reference" "D3"
+			(at 412.75 331.4699 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "TVS"
+			(at 412.75 334.0099 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "Diode_SMD:D_SMA_Handsoldering"
+			(at 410.21 332.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 410.21 332.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Zener diode"
+			(at 410.21 332.74 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "0609be79-27a0-4fd3-9a1f-2ae29ec003e0")
+		)
+		(pin "1"
+			(uuid "7e960688-7470-49cc-a23d-33b017f711e7")
+		)
+		(instances
+			(project ""
+				(path "/81fe6255-7db2-4e1e-90bf-860defad696b"
+					(reference "D3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:R_US")
 		(at 115.57 217.17 0)
 		(unit 1)
@@ -30907,6 +31502,71 @@
 			(project "clock"
 				(path "/81fe6255-7db2-4e1e-90bf-860defad696b"
 					(reference "#PWR033")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:VCC")
+		(at 443.23 278.13 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "4fbd188a-d5b0-4e46-91aa-d98cea729dcf")
+		(property "Reference" "#PWR087"
+			(at 443.23 281.94 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "VCC"
+			(at 443.23 274.066 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 443.23 278.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 443.23 278.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"VCC\""
+			(at 443.23 278.13 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "960c385e-382d-401b-93e5-712924e3b6ef")
+		)
+		(instances
+			(project "clock"
+				(path "/81fe6255-7db2-4e1e-90bf-860defad696b"
+					(reference "#PWR087")
 					(unit 1)
 				)
 			)
@@ -31403,7 +32063,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Display_7Segment:DA56-11CGKWA"
+		(property "Footprint" "Parts:DIPS2200W51P254L3580H1000Q18N"
 			(at 368.808 416.56 0)
 			(effects
 				(font
@@ -31967,7 +32627,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:Q_NPN")
+		(lib_id "Transistor_BJT:Q_NPN_EBC")
 		(at 251.46 119.38 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -31976,7 +32636,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "5db2c97c-a480-415c-8da0-e6f3ad39a1d5")
-		(property "Reference" "Q15"
+		(property "Reference" "Q16"
 			(at 256.54 118.1099 0)
 			(effects
 				(font
@@ -32012,7 +32672,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "NPN bipolar junction transistor"
+		(property "Description" "NPN transistor, emitter/base/collector"
 			(at 251.46 119.38 0)
 			(effects
 				(font
@@ -32021,19 +32681,19 @@
 				(hide yes)
 			)
 		)
-		(pin "C"
+		(pin "1"
 			(uuid "906d2ccc-81ca-4372-92df-ff50d5916636")
 		)
-		(pin "E"
+		(pin "2"
 			(uuid "049facdf-964d-4bde-a95f-b7b31e5b87f1")
 		)
-		(pin "B"
+		(pin "3"
 			(uuid "4c6e5eec-878c-44dd-8a6f-8015732db13a")
 		)
 		(instances
 			(project "clock"
 				(path "/81fe6255-7db2-4e1e-90bf-860defad696b"
-					(reference "Q15")
+					(reference "Q16")
 					(unit 1)
 				)
 			)
@@ -33103,7 +33763,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:Q_NPN")
+		(lib_id "Transistor_BJT:Q_NPN_EBC")
 		(at 175.26 328.93 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -33112,7 +33772,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "69e123f0-8333-4f81-9152-d1b4fa5302fb")
-		(property "Reference" "Q44"
+		(property "Reference" "Q45"
 			(at 180.34 327.6599 0)
 			(effects
 				(font
@@ -33148,7 +33808,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "NPN bipolar junction transistor"
+		(property "Description" "NPN transistor, emitter/base/collector"
 			(at 175.26 328.93 0)
 			(effects
 				(font
@@ -33157,19 +33817,19 @@
 				(hide yes)
 			)
 		)
-		(pin "C"
+		(pin "1"
 			(uuid "da3525c0-b34c-4c74-9029-9d80a8f12e4c")
 		)
-		(pin "E"
+		(pin "2"
 			(uuid "c06892f0-986e-4a4b-9af6-1f3498dc7fc0")
 		)
-		(pin "B"
+		(pin "3"
 			(uuid "d9466e07-2ee7-446a-81f8-edb335291bc6")
 		)
 		(instances
 			(project "clock"
 				(path "/81fe6255-7db2-4e1e-90bf-860defad696b"
-					(reference "Q44")
+					(reference "Q45")
 					(unit 1)
 				)
 			)
@@ -33336,7 +33996,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Display_7Segment:DA56-11CGKWA"
+		(property "Footprint" "Parts:DIPS2200W51P254L3580H1000Q18N"
 			(at 305.308 499.11 0)
 			(effects
 				(font
@@ -33625,7 +34285,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:Q_NPN")
+		(lib_id "Transistor_BJT:Q_NPN_EBC")
 		(at 200.66 276.86 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -33634,7 +34294,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "6dc903ad-9772-407b-b63e-16a1d402b346")
-		(property "Reference" "Q35"
+		(property "Reference" "Q38"
 			(at 205.74 275.5899 0)
 			(effects
 				(font
@@ -33670,7 +34330,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "NPN bipolar junction transistor"
+		(property "Description" "NPN transistor, emitter/base/collector"
 			(at 200.66 276.86 0)
 			(effects
 				(font
@@ -33679,26 +34339,26 @@
 				(hide yes)
 			)
 		)
-		(pin "C"
+		(pin "3"
 			(uuid "322ae85f-0961-4c19-9731-49235947a26d")
 		)
-		(pin "E"
+		(pin "1"
 			(uuid "b3f4d5a8-272f-4181-a774-ec5731b6f0e8")
 		)
-		(pin "B"
+		(pin "2"
 			(uuid "aff1963f-349e-4b1b-bfb8-b23841890a9c")
 		)
 		(instances
 			(project "clock"
 				(path "/81fe6255-7db2-4e1e-90bf-860defad696b"
-					(reference "Q35")
+					(reference "Q38")
 					(unit 1)
 				)
 			)
 		)
 	)
 	(symbol
-		(lib_id "Device:Q_NPN")
+		(lib_id "Transistor_BJT:Q_NPN_EBC")
 		(at 99.06 119.38 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -33707,7 +34367,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "706236aa-29b2-418f-bc0c-45b92d30c1ee")
-		(property "Reference" "Q9"
+		(property "Reference" "Q10"
 			(at 104.14 118.1099 0)
 			(effects
 				(font
@@ -33743,7 +34403,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "NPN bipolar junction transistor"
+		(property "Description" "NPN transistor, emitter/base/collector"
 			(at 99.06 119.38 0)
 			(effects
 				(font
@@ -33752,19 +34412,19 @@
 				(hide yes)
 			)
 		)
-		(pin "C"
+		(pin "1"
 			(uuid "cd1391c4-329c-4a97-b270-018d945fff84")
 		)
-		(pin "E"
+		(pin "3"
 			(uuid "5d439bc9-ef0c-42d8-8add-b0da756451b3")
 		)
-		(pin "B"
+		(pin "2"
 			(uuid "e1bdce86-809e-4ce4-8756-6ff627f06273")
 		)
 		(instances
 			(project "clock"
 				(path "/81fe6255-7db2-4e1e-90bf-860defad696b"
-					(reference "Q9")
+					(reference "Q10")
 					(unit 1)
 				)
 			)
@@ -34100,7 +34760,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:Q_NPN")
+		(lib_id "Transistor_BJT:Q_NPN_EBC")
 		(at 124.46 119.38 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -34109,7 +34769,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "72fb07f2-4b73-4933-97ce-6c972b2a40ed")
-		(property "Reference" "Q10"
+		(property "Reference" "Q11"
 			(at 129.54 118.1099 0)
 			(effects
 				(font
@@ -34145,7 +34805,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "NPN bipolar junction transistor"
+		(property "Description" "NPN transistor, emitter/base/collector"
 			(at 124.46 119.38 0)
 			(effects
 				(font
@@ -34154,19 +34814,19 @@
 				(hide yes)
 			)
 		)
-		(pin "C"
+		(pin "3"
 			(uuid "5b6f1a6d-f29b-4a87-b0c9-5a8470042163")
 		)
-		(pin "E"
+		(pin "1"
 			(uuid "83792770-7d16-4091-9c44-808e83fdc613")
 		)
-		(pin "B"
+		(pin "2"
 			(uuid "dd63a314-bbb8-48af-93ba-b066230995a6")
 		)
 		(instances
 			(project "clock"
 				(path "/81fe6255-7db2-4e1e-90bf-860defad696b"
-					(reference "Q10")
+					(reference "Q11")
 					(unit 1)
 				)
 			)
@@ -34198,7 +34858,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Display_7Segment:DA56-11CGKWA"
+		(property "Footprint" "Parts:DIPS2200W51P254L3580H1000Q18N"
 			(at 458.978 499.11 0)
 			(effects
 				(font
@@ -34629,7 +35289,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:Q_NPN")
+		(lib_id "Transistor_BJT:Q_NPN_EBC")
 		(at 149.86 119.38 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -34638,7 +35298,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "7d21baf2-8f88-4664-8ca8-c2b55a88e356")
-		(property "Reference" "Q11"
+		(property "Reference" "Q12"
 			(at 154.94 118.1099 0)
 			(effects
 				(font
@@ -34674,7 +35334,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "NPN bipolar junction transistor"
+		(property "Description" "NPN transistor, emitter/base/collector"
 			(at 149.86 119.38 0)
 			(effects
 				(font
@@ -34683,19 +35343,19 @@
 				(hide yes)
 			)
 		)
-		(pin "C"
+		(pin "3"
 			(uuid "5bc0fd00-9575-46b0-afea-4e16141ef13c")
 		)
-		(pin "E"
+		(pin "1"
 			(uuid "1a0c97d3-7fad-475d-acba-598233dffe43")
 		)
-		(pin "B"
+		(pin "2"
 			(uuid "6589063b-d392-4a2f-8150-09f6f049ecb8")
 		)
 		(instances
 			(project "clock"
 				(path "/81fe6255-7db2-4e1e-90bf-860defad696b"
-					(reference "Q11")
+					(reference "Q12")
 					(unit 1)
 				)
 			)
@@ -34872,7 +35532,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Display_7Segment:DA56-11CGKWA"
+		(property "Footprint" "Parts:DIPS2200W51P254L3580H1000Q18N"
 			(at 368.808 499.11 0)
 			(effects
 				(font
@@ -35169,7 +35829,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:Q_NPN")
+		(lib_id "Transistor_BJT:Q_NPN_EBC")
 		(at 124.46 328.93 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -35178,7 +35838,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "84a3a4fb-2a94-48ef-885c-8d8e6ea16424")
-		(property "Reference" "Q42"
+		(property "Reference" "Q43"
 			(at 129.54 327.6599 0)
 			(effects
 				(font
@@ -35214,7 +35874,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "NPN bipolar junction transistor"
+		(property "Description" "NPN transistor, emitter/base/collector"
 			(at 124.46 328.93 0)
 			(effects
 				(font
@@ -35223,19 +35883,19 @@
 				(hide yes)
 			)
 		)
-		(pin "C"
+		(pin "3"
 			(uuid "d52fccd8-7005-46b8-a8b7-124da4e172da")
 		)
-		(pin "E"
+		(pin "2"
 			(uuid "9bceee7e-011d-4a36-94c2-0623bcf89519")
 		)
-		(pin "B"
+		(pin "1"
 			(uuid "13e28ea7-77b6-4c57-a55b-93e839879844")
 		)
 		(instances
 			(project "clock"
 				(path "/81fe6255-7db2-4e1e-90bf-860defad696b"
-					(reference "Q42")
+					(reference "Q43")
 					(unit 1)
 				)
 			)
@@ -35395,7 +36055,7 @@
 				)
 			)
 		)
-		(property "Value" "Power"
+		(property "Value" "Set"
 			(at 530.86 218.44 0)
 			(effects
 				(font
@@ -35696,7 +36356,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:Q_NPN")
+		(lib_id "Transistor_BJT:Q_NPN_EBC")
 		(at 99.06 171.45 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -35705,7 +36365,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "8c01eb54-ded4-4eb5-a17e-3f946fd9701e")
-		(property "Reference" "Q17"
+		(property "Reference" "Q18"
 			(at 104.14 170.1799 0)
 			(effects
 				(font
@@ -35741,7 +36401,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "NPN bipolar junction transistor"
+		(property "Description" "NPN transistor, emitter/base/collector"
 			(at 99.06 171.45 0)
 			(effects
 				(font
@@ -35750,19 +36410,19 @@
 				(hide yes)
 			)
 		)
-		(pin "C"
+		(pin "1"
 			(uuid "8238d39d-da84-4f7a-9600-5b58d1f76e9e")
 		)
-		(pin "E"
+		(pin "2"
 			(uuid "19cd1c37-d63a-4c35-a9b2-c6b1d8371ba8")
 		)
-		(pin "B"
+		(pin "3"
 			(uuid "6f394ad6-ddd9-49cb-985d-fca20b17d507")
 		)
 		(instances
 			(project "clock"
 				(path "/81fe6255-7db2-4e1e-90bf-860defad696b"
-					(reference "Q17")
+					(reference "Q18")
 					(unit 1)
 				)
 			)
@@ -35909,6 +36569,71 @@
 		)
 	)
 	(symbol
+		(lib_id "power:VCC")
+		(at 410.21 323.85 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "8d5f82bd-0007-48de-a3e6-9a73c43c4c96")
+		(property "Reference" "#PWR085"
+			(at 410.21 327.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "VCC"
+			(at 410.21 320.294 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 410.21 323.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 410.21 323.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"VCC\""
+			(at 410.21 323.85 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "32f9b2a3-3227-49dd-84b6-bb1e4dca3769")
+		)
+		(instances
+			(project "clock"
+				(path "/81fe6255-7db2-4e1e-90bf-860defad696b"
+					(reference "#PWR085")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
 		(lib_id "Device:R_US")
 		(at 101.6 106.68 0)
 		(unit 1)
@@ -35979,7 +36704,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:Q_NPN")
+		(lib_id "Transistor_BJT:Q_NPN_EBC")
 		(at 124.46 276.86 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -35988,7 +36713,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "8e27b5d4-9c90-443f-ba73-ce1465a4c7cc")
-		(property "Reference" "Q29"
+		(property "Reference" "Q35"
 			(at 129.54 275.5899 0)
 			(effects
 				(font
@@ -36024,7 +36749,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "NPN bipolar junction transistor"
+		(property "Description" "NPN transistor, emitter/base/collector"
 			(at 124.46 276.86 0)
 			(effects
 				(font
@@ -36033,26 +36758,26 @@
 				(hide yes)
 			)
 		)
-		(pin "C"
+		(pin "1"
 			(uuid "324034f9-2585-4529-9099-4ad318991901")
 		)
-		(pin "E"
+		(pin "3"
 			(uuid "95711883-ae39-44d6-bb61-385ad9c74093")
 		)
-		(pin "B"
+		(pin "2"
 			(uuid "1573e756-3bc5-4bdf-b380-2b06bd122618")
 		)
 		(instances
 			(project "clock"
 				(path "/81fe6255-7db2-4e1e-90bf-860defad696b"
-					(reference "Q29")
+					(reference "Q35")
 					(unit 1)
 				)
 			)
 		)
 	)
 	(symbol
-		(lib_id "Device:Q_NPN")
+		(lib_id "Transistor_BJT:Q_NPN_EBC")
 		(at 251.46 171.45 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -36061,7 +36786,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "8e6106f8-c904-4d7a-a653-179064ade199")
-		(property "Reference" "Q23"
+		(property "Reference" "Q24"
 			(at 256.54 170.1799 0)
 			(effects
 				(font
@@ -36097,7 +36822,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "NPN bipolar junction transistor"
+		(property "Description" "NPN transistor, emitter/base/collector"
 			(at 251.46 171.45 0)
 			(effects
 				(font
@@ -36106,19 +36831,19 @@
 				(hide yes)
 			)
 		)
-		(pin "C"
+		(pin "2"
 			(uuid "0f3a7453-65a6-403d-aded-ab43ba5864e9")
 		)
-		(pin "E"
+		(pin "3"
 			(uuid "97d70866-c534-4b39-80e4-3a83c61b95c6")
 		)
-		(pin "B"
+		(pin "1"
 			(uuid "c4930ce1-1b0f-4551-af6a-aaa1db3a0104")
 		)
 		(instances
 			(project "clock"
 				(path "/81fe6255-7db2-4e1e-90bf-860defad696b"
-					(reference "Q23")
+					(reference "Q24")
 					(unit 1)
 				)
 			)
@@ -36335,7 +37060,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:Q_NPN")
+		(lib_id "Transistor_BJT:Q_NPN_EBC")
 		(at 175.26 224.79 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -36344,7 +37069,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "93ec6fbd-be4a-46c3-975a-125a50b8d4f8")
-		(property "Reference" "Q32"
+		(property "Reference" "Q29"
 			(at 180.34 223.5199 0)
 			(effects
 				(font
@@ -36380,7 +37105,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "NPN bipolar junction transistor"
+		(property "Description" "NPN transistor, emitter/base/collector"
 			(at 175.26 224.79 0)
 			(effects
 				(font
@@ -36389,19 +37114,19 @@
 				(hide yes)
 			)
 		)
-		(pin "C"
+		(pin "1"
 			(uuid "b12156a0-1a51-434b-aa1b-1e25b9f59650")
 		)
-		(pin "E"
+		(pin "3"
 			(uuid "b2296012-780c-4b75-bf66-6c7ba3222995")
 		)
-		(pin "B"
+		(pin "2"
 			(uuid "da120af2-45c1-4b98-9c62-7a8a68f0e912")
 		)
 		(instances
 			(project "clock"
 				(path "/81fe6255-7db2-4e1e-90bf-860defad696b"
-					(reference "Q32")
+					(reference "Q29")
 					(unit 1)
 				)
 			)
@@ -36928,7 +37653,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Display_7Segment:DA56-11CGKWA"
+		(property "Footprint" "Parts:DIPS2200W51P254L3580H1000Q18N"
 			(at 643.128 416.56 0)
 			(effects
 				(font
@@ -37013,6 +37738,72 @@
 			(project "clock"
 				(path "/81fe6255-7db2-4e1e-90bf-860defad696b"
 					(reference "DS1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "power:GND")
+		(at 410.21 340.36 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "98acf5f3-6799-4fe2-a096-bf7f6e530fef")
+		(property "Reference" "#PWR086"
+			(at 410.21 346.71 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Value" "GND"
+			(at 410.21 345.44 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" ""
+			(at 410.21 340.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" ""
+			(at 410.21 340.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
+			(at 410.21 340.36 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "1"
+			(uuid "e5ec596d-0508-406d-9587-e0b9afb94304")
+		)
+		(instances
+			(project "clock"
+				(path "/81fe6255-7db2-4e1e-90bf-860defad696b"
+					(reference "#PWR086")
 					(unit 1)
 				)
 			)
@@ -37114,7 +37905,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Display_7Segment:DA56-11CGKWA"
+		(property "Footprint" "Parts:DIPS2200W51P254L3580H1000Q18N"
 			(at 368.808 461.01 0)
 			(effects
 				(font
@@ -37501,7 +38292,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Display_7Segment:DA56-11CGKWA"
+		(property "Footprint" "Parts:DIPS2200W51P254L3580H1000Q18N"
 			(at 274.828 416.56 0)
 			(effects
 				(font
@@ -37662,7 +38453,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:Q_PNP")
+		(lib_id "Transistor_BJT:Q_PNP_BCE")
 		(at 116.84 49.53 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -37680,7 +38471,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "Q_PNP"
+		(property "Value" "TIP127"
 			(at 121.92 50.7999 0)
 			(effects
 				(font
@@ -37707,7 +38498,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "PNP bipolar junction transistor"
+		(property "Description" "PNP transistor, base/collector/emitter"
 			(at 116.84 49.53 0)
 			(effects
 				(font
@@ -37716,13 +38507,13 @@
 				(hide yes)
 			)
 		)
-		(pin "E"
+		(pin "2"
 			(uuid "a205d41c-7d5d-4395-8530-55cd30b737cd")
 		)
-		(pin "C"
+		(pin "3"
 			(uuid "4768c24b-1d6f-4b88-90c2-938855b6ade5")
 		)
-		(pin "B"
+		(pin "1"
 			(uuid "108a86fd-fc35-442c-acf5-04df5c28ca9b")
 		)
 		(instances
@@ -37735,7 +38526,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:Q_NPN")
+		(lib_id "Transistor_BJT:Q_NPN_EBC")
 		(at 226.06 276.86 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -37744,7 +38535,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "a0ca0b8e-785e-4983-a05b-3f0b2bca7440")
-		(property "Reference" "Q37"
+		(property "Reference" "Q39"
 			(at 231.14 275.5899 0)
 			(effects
 				(font
@@ -37780,7 +38571,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "NPN bipolar junction transistor"
+		(property "Description" "NPN transistor, emitter/base/collector"
 			(at 226.06 276.86 0)
 			(effects
 				(font
@@ -37789,19 +38580,19 @@
 				(hide yes)
 			)
 		)
-		(pin "C"
+		(pin "1"
 			(uuid "45545d2a-efb1-41f9-8da1-7c00c4d6e4d4")
 		)
-		(pin "E"
+		(pin "2"
 			(uuid "72ff1d55-201f-4348-a5a6-f4c14e32d2b7")
 		)
-		(pin "B"
+		(pin "3"
 			(uuid "f5b2f6b0-6344-45aa-b9cb-d6fed0f3b813")
 		)
 		(instances
 			(project "clock"
 				(path "/81fe6255-7db2-4e1e-90bf-860defad696b"
-					(reference "Q37")
+					(reference "Q39")
 					(unit 1)
 				)
 			)
@@ -38411,7 +39202,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:Q_NPN")
+		(lib_id "Transistor_BJT:Q_NPN_EBC")
 		(at 73.66 171.45 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -38420,7 +39211,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "a88d1b79-10bf-4db1-98db-a468ac6be45d")
-		(property "Reference" "Q16"
+		(property "Reference" "Q17"
 			(at 78.74 170.1799 0)
 			(effects
 				(font
@@ -38456,7 +39247,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "NPN bipolar junction transistor"
+		(property "Description" "NPN transistor, emitter/base/collector"
 			(at 73.66 171.45 0)
 			(effects
 				(font
@@ -38465,19 +39256,19 @@
 				(hide yes)
 			)
 		)
-		(pin "C"
+		(pin "2"
 			(uuid "804c5097-d0bc-42a6-913e-79cea8000ff6")
 		)
-		(pin "E"
+		(pin "1"
 			(uuid "bfd6d0eb-8a8c-4312-aa42-eef83471dea8")
 		)
-		(pin "B"
+		(pin "3"
 			(uuid "cca53953-a16e-493e-a157-a41e10355646")
 		)
 		(instances
 			(project "clock"
 				(path "/81fe6255-7db2-4e1e-90bf-860defad696b"
-					(reference "Q16")
+					(reference "Q17")
 					(unit 1)
 				)
 			)
@@ -38554,7 +39345,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:Q_NPN")
+		(lib_id "Transistor_BJT:Q_NPN_EBC")
 		(at 73.66 328.93 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -38563,7 +39354,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "ac113417-1865-4ca3-b4a2-c52424f6362a")
-		(property "Reference" "Q40"
+		(property "Reference" "Q41"
 			(at 78.74 327.6599 0)
 			(effects
 				(font
@@ -38599,7 +39390,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "NPN bipolar junction transistor"
+		(property "Description" "NPN transistor, emitter/base/collector"
 			(at 73.66 328.93 0)
 			(effects
 				(font
@@ -38608,26 +39399,26 @@
 				(hide yes)
 			)
 		)
-		(pin "C"
+		(pin "2"
 			(uuid "fa1edf9f-91b9-429f-8d93-c5fc34a9d9f6")
 		)
-		(pin "E"
+		(pin "3"
 			(uuid "34826269-644a-41ca-9be9-902081648ac5")
 		)
-		(pin "B"
+		(pin "1"
 			(uuid "99b73635-2350-4d8d-a3bc-51a760c50e06")
 		)
 		(instances
 			(project "clock"
 				(path "/81fe6255-7db2-4e1e-90bf-860defad696b"
-					(reference "Q40")
+					(reference "Q41")
 					(unit 1)
 				)
 			)
 		)
 	)
 	(symbol
-		(lib_id "Device:Q_NPN")
+		(lib_id "Transistor_BJT:Q_NPN_EBC")
 		(at 200.66 171.45 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -38636,7 +39427,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "b1a611de-41ef-45e9-b7d4-ac255e423b44")
-		(property "Reference" "Q21"
+		(property "Reference" "Q22"
 			(at 205.74 170.1799 0)
 			(effects
 				(font
@@ -38672,7 +39463,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "NPN bipolar junction transistor"
+		(property "Description" "NPN transistor, emitter/base/collector"
 			(at 200.66 171.45 0)
 			(effects
 				(font
@@ -38681,19 +39472,19 @@
 				(hide yes)
 			)
 		)
-		(pin "C"
+		(pin "2"
 			(uuid "25a390d4-930f-4439-a0fc-9a15b746f782")
 		)
-		(pin "E"
+		(pin "1"
 			(uuid "b7ad7698-8821-4af7-9013-61c71c9fea68")
 		)
-		(pin "B"
+		(pin "3"
 			(uuid "884ff4c3-e38f-45ec-9a99-aef2610ecb06")
 		)
 		(instances
 			(project "clock"
 				(path "/81fe6255-7db2-4e1e-90bf-860defad696b"
-					(reference "Q21")
+					(reference "Q22")
 					(unit 1)
 				)
 			)
@@ -38770,7 +39561,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:Q_NPN")
+		(lib_id "Transistor_BJT:Q_NPN_EBC")
 		(at 175.26 119.38 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -38779,7 +39570,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "b305831b-653c-4c0f-af1e-79eb1493742b")
-		(property "Reference" "Q12"
+		(property "Reference" "Q13"
 			(at 180.34 118.1099 0)
 			(effects
 				(font
@@ -38815,7 +39606,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "NPN bipolar junction transistor"
+		(property "Description" "NPN transistor, emitter/base/collector"
 			(at 175.26 119.38 0)
 			(effects
 				(font
@@ -38824,19 +39615,19 @@
 				(hide yes)
 			)
 		)
-		(pin "C"
+		(pin "3"
 			(uuid "6ed7566f-8a3d-464f-bdc4-deca51f70980")
 		)
-		(pin "E"
+		(pin "1"
 			(uuid "12266c5b-00d4-4069-b9a6-297592c5ccad")
 		)
-		(pin "B"
+		(pin "2"
 			(uuid "3eccffbd-29fe-4847-b23d-88b20d8b7d2e")
 		)
 		(instances
 			(project "clock"
 				(path "/81fe6255-7db2-4e1e-90bf-860defad696b"
-					(reference "Q12")
+					(reference "Q13")
 					(unit 1)
 				)
 			)
@@ -39078,7 +39869,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Display_7Segment:DA56-11CGKWA"
+		(property "Footprint" "Parts:DIPS2200W51P254L3580H1000Q18N"
 			(at 105.918 416.56 0)
 			(effects
 				(font
@@ -39300,7 +40091,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:Q_NPN")
+		(lib_id "Transistor_BJT:Q_NPN_EBC")
 		(at 226.06 224.79 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -39309,7 +40100,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "b94cf489-b980-4d4e-b956-b814dec3b15f")
-		(property "Reference" "Q36"
+		(property "Reference" "Q31"
 			(at 231.14 223.5199 0)
 			(effects
 				(font
@@ -39345,7 +40136,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "NPN bipolar junction transistor"
+		(property "Description" "NPN transistor, emitter/base/collector"
 			(at 226.06 224.79 0)
 			(effects
 				(font
@@ -39354,19 +40145,19 @@
 				(hide yes)
 			)
 		)
-		(pin "C"
+		(pin "3"
 			(uuid "537dfe64-b8fa-427e-8bfc-35e7661e303d")
 		)
-		(pin "E"
+		(pin "2"
 			(uuid "4203f468-ecd6-4d57-b83c-1caca9de7ed0")
 		)
-		(pin "B"
+		(pin "1"
 			(uuid "2f7154e0-2443-44f8-a393-69ec55ec0e11")
 		)
 		(instances
 			(project "clock"
 				(path "/81fe6255-7db2-4e1e-90bf-860defad696b"
-					(reference "Q36")
+					(reference "Q31")
 					(unit 1)
 				)
 			)
@@ -39712,7 +40503,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:Q_NPN")
+		(lib_id "Transistor_BJT:Q_NPN_EBC")
 		(at 124.46 224.79 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -39721,7 +40512,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "bd37e1da-0cef-4663-98a3-d32533afe67e")
-		(property "Reference" "Q28"
+		(property "Reference" "Q27"
 			(at 129.54 223.5199 0)
 			(effects
 				(font
@@ -39757,7 +40548,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "NPN bipolar junction transistor"
+		(property "Description" "NPN transistor, emitter/base/collector"
 			(at 124.46 224.79 0)
 			(effects
 				(font
@@ -39766,19 +40557,19 @@
 				(hide yes)
 			)
 		)
-		(pin "C"
+		(pin "2"
 			(uuid "b299880f-dc17-44e8-9f67-6e1953be1859")
 		)
-		(pin "E"
+		(pin "3"
 			(uuid "2fe6a568-910a-4f3c-b3f7-7262e0cb04cf")
 		)
-		(pin "B"
+		(pin "1"
 			(uuid "e9b078e8-74d0-4fc6-a532-508ecf5af91e")
 		)
 		(instances
 			(project "clock"
 				(path "/81fe6255-7db2-4e1e-90bf-860defad696b"
-					(reference "Q28")
+					(reference "Q27")
 					(unit 1)
 				)
 			)
@@ -40033,7 +40824,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:Q_NPN")
+		(lib_id "Transistor_BJT:Q_NPN_EBC")
 		(at 175.26 276.86 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -40042,7 +40833,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "c3907995-4713-43a1-9225-9cccd1f17d68")
-		(property "Reference" "Q33"
+		(property "Reference" "Q37"
 			(at 180.34 275.5899 0)
 			(effects
 				(font
@@ -40078,7 +40869,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "NPN bipolar junction transistor"
+		(property "Description" "NPN transistor, emitter/base/collector"
 			(at 175.26 276.86 0)
 			(effects
 				(font
@@ -40087,19 +40878,19 @@
 				(hide yes)
 			)
 		)
-		(pin "C"
+		(pin "3"
 			(uuid "45ee668a-5a62-49f4-ad47-d841bc51fda7")
 		)
-		(pin "E"
+		(pin "2"
 			(uuid "a9cdb25a-f04e-4232-9384-86dafd69c01f")
 		)
-		(pin "B"
+		(pin "1"
 			(uuid "43f7a574-9ea5-4823-9fdc-e8e4bfa04ee0")
 		)
 		(instances
 			(project "clock"
 				(path "/81fe6255-7db2-4e1e-90bf-860defad696b"
-					(reference "Q33")
+					(reference "Q37")
 					(unit 1)
 				)
 			)
@@ -40266,7 +41057,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Display_7Segment:DA56-11CGKWA"
+		(property "Footprint" "Parts:DIPS2200W51P254L3580H1000Q18N"
 			(at 458.978 461.01 0)
 			(effects
 				(font
@@ -40785,7 +41576,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Display_7Segment:DA56-11CGKWA"
+		(property "Footprint" "Parts:DIPS2200W51P254L3580H1000Q18N"
 			(at 274.828 461.01 0)
 			(effects
 				(font
@@ -40936,6 +41727,88 @@
 			(project "clock"
 				(path "/81fe6255-7db2-4e1e-90bf-860defad696b"
 					(reference "#PWR068")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Connector:Conn_PIC_ICSP_ICD")
+		(at 448.31 292.1 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "cdc3d80e-d131-494f-9e19-59851a78ced0")
+		(property "Reference" "J4"
+			(at 439.42 290.8299 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Value" "Conn_PIC_ICSP_ICD"
+			(at 439.42 293.3699 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify right)
+			)
+		)
+		(property "Footprint" ""
+			(at 449.58 288.29 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "http://ww1.microchip.com/downloads/en/devicedoc/30277d.pdf"
+			(at 440.69 295.91 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Microchip PIC In-Circuit Serial Programming/Debugging (ICSP/ICD) connector"
+			(at 448.31 292.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "3ff7508c-4ae2-4934-be5a-565056e1dbdc")
+		)
+		(pin "3"
+			(uuid "2ef31762-17f9-44d2-a39c-3a64c9bfa92d")
+		)
+		(pin "1"
+			(uuid "303dae53-2767-439c-af48-8b57ee1e9182")
+		)
+		(pin "5"
+			(uuid "ee4cc304-f71c-4161-b8e1-245ab5e71777")
+		)
+		(pin "6"
+			(uuid "941828a8-9cb5-445c-af49-1d15c79f85cc")
+		)
+		(pin "4"
+			(uuid "121ab5bc-af1b-48ee-ad88-5cc2fb373285")
+		)
+		(instances
+			(project ""
+				(path "/81fe6255-7db2-4e1e-90bf-860defad696b"
+					(reference "J4")
 					(unit 1)
 				)
 			)
@@ -42533,7 +43406,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Display_7Segment:DA56-11CGKWA"
+		(property "Footprint" "Parts:DIPS2200W51P254L3580H1000Q18N"
 			(at 643.128 461.01 0)
 			(effects
 				(font
@@ -43033,7 +43906,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:Q_PNP")
+		(lib_id "Transistor_BJT:Q_PNP_BCE")
 		(at 138.43 49.53 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -43051,7 +43924,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "Q_PNP"
+		(property "Value" "TIP127"
 			(at 143.51 50.7999 0)
 			(effects
 				(font
@@ -43078,7 +43951,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "PNP bipolar junction transistor"
+		(property "Description" "PNP transistor, base/collector/emitter"
 			(at 138.43 49.53 0)
 			(effects
 				(font
@@ -43087,13 +43960,13 @@
 				(hide yes)
 			)
 		)
-		(pin "E"
+		(pin "1"
 			(uuid "b2097dd3-7455-45cf-bf55-378398fa5371")
 		)
-		(pin "C"
+		(pin "2"
 			(uuid "cfea70c1-68a2-4360-9441-bca43cba0e1f")
 		)
-		(pin "B"
+		(pin "3"
 			(uuid "10a72794-9f0a-44d4-b7ff-3b5ab63406c9")
 		)
 		(instances
@@ -43371,7 +44244,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:Q_NPN")
+		(lib_id "Transistor_BJT:Q_NPN_EBC")
 		(at 124.46 171.45 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -43380,7 +44253,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "efea18a4-41eb-4ce9-ab21-aac791bf05ab")
-		(property "Reference" "Q18"
+		(property "Reference" "Q19"
 			(at 129.54 170.1799 0)
 			(effects
 				(font
@@ -43416,7 +44289,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "NPN bipolar junction transistor"
+		(property "Description" "NPN transistor, emitter/base/collector"
 			(at 124.46 171.45 0)
 			(effects
 				(font
@@ -43425,26 +44298,26 @@
 				(hide yes)
 			)
 		)
-		(pin "C"
+		(pin "3"
 			(uuid "6d7f9e90-3929-4cec-8e4d-19d513ed0610")
 		)
-		(pin "E"
+		(pin "2"
 			(uuid "2feb8250-a41e-441c-ab8d-d612dd140da9")
 		)
-		(pin "B"
+		(pin "1"
 			(uuid "13c7545c-064f-4bbf-abd1-1428f9e2d853")
 		)
 		(instances
 			(project "clock"
 				(path "/81fe6255-7db2-4e1e-90bf-860defad696b"
-					(reference "Q18")
+					(reference "Q19")
 					(unit 1)
 				)
 			)
 		)
 	)
 	(symbol
-		(lib_id "Device:Q_PNP")
+		(lib_id "Transistor_BJT:Q_PNP_BCE")
 		(at 95.25 49.53 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -43462,7 +44335,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "Q_PNP"
+		(property "Value" "TIP127"
 			(at 100.33 50.7999 0)
 			(effects
 				(font
@@ -43489,7 +44362,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "PNP bipolar junction transistor"
+		(property "Description" "PNP transistor, base/collector/emitter"
 			(at 95.25 49.53 0)
 			(effects
 				(font
@@ -43498,13 +44371,13 @@
 				(hide yes)
 			)
 		)
-		(pin "E"
+		(pin "1"
 			(uuid "ed6b6f91-54ab-4761-80f5-cf637b0703d7")
 		)
-		(pin "C"
+		(pin "3"
 			(uuid "1b6b0082-8b81-4486-b828-84b476af56b1")
 		)
-		(pin "B"
+		(pin "2"
 			(uuid "70d3016e-98df-41f0-ad80-7a49ae9de00f")
 		)
 		(instances
@@ -43517,7 +44390,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:Q_NPN")
+		(lib_id "Transistor_BJT:Q_NPN_EBC")
 		(at 226.06 171.45 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -43526,7 +44399,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "f0135db8-3224-4db5-b867-6f7531808217")
-		(property "Reference" "Q22"
+		(property "Reference" "Q23"
 			(at 231.14 170.1799 0)
 			(effects
 				(font
@@ -43562,7 +44435,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "NPN bipolar junction transistor"
+		(property "Description" "NPN transistor, emitter/base/collector"
 			(at 226.06 171.45 0)
 			(effects
 				(font
@@ -43571,26 +44444,26 @@
 				(hide yes)
 			)
 		)
-		(pin "C"
+		(pin "2"
 			(uuid "756f9a37-f158-497c-8f3f-03db0cd2b26b")
 		)
-		(pin "E"
+		(pin "3"
 			(uuid "e50e9287-5528-43b3-829e-f0f614c81a99")
 		)
-		(pin "B"
+		(pin "1"
 			(uuid "4042f9a7-31c5-4867-a0ea-5d264f28414a")
 		)
 		(instances
 			(project "clock"
 				(path "/81fe6255-7db2-4e1e-90bf-860defad696b"
-					(reference "Q22")
+					(reference "Q23")
 					(unit 1)
 				)
 			)
 		)
 	)
 	(symbol
-		(lib_id "Device:Q_NPN")
+		(lib_id "Transistor_BJT:Q_NPN_EBC")
 		(at 99.06 224.79 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -43635,7 +44508,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "NPN bipolar junction transistor"
+		(property "Description" "NPN transistor, emitter/base/collector"
 			(at 99.06 224.79 0)
 			(effects
 				(font
@@ -43644,13 +44517,13 @@
 				(hide yes)
 			)
 		)
-		(pin "C"
+		(pin "3"
 			(uuid "1c1cef45-c040-4dcb-99c9-ea7895b3ac67")
 		)
-		(pin "E"
+		(pin "2"
 			(uuid "5ed1cc31-1dc6-418f-82ab-6a73204670a4")
 		)
-		(pin "B"
+		(pin "1"
 			(uuid "3586aee9-7e73-4eef-86d6-f7dba0736005")
 		)
 		(instances
@@ -43799,7 +44672,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:Q_PNP")
+		(lib_id "Transistor_BJT:Q_PNP_BCE")
 		(at 160.02 49.53 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -43817,7 +44690,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "Q_PNP"
+		(property "Value" "TIP127"
 			(at 165.1 50.7999 0)
 			(effects
 				(font
@@ -43844,7 +44717,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "PNP bipolar junction transistor"
+		(property "Description" "PNP transistor, base/collector/emitter"
 			(at 160.02 49.53 0)
 			(effects
 				(font
@@ -43853,13 +44726,13 @@
 				(hide yes)
 			)
 		)
-		(pin "E"
+		(pin "2"
 			(uuid "b2152b6a-11cf-4d21-99b8-eff00d905096")
 		)
-		(pin "C"
+		(pin "3"
 			(uuid "8129315c-d805-4ca8-bdfe-a8ebf58b6331")
 		)
-		(pin "B"
+		(pin "1"
 			(uuid "cb9a0eb0-56f7-42bf-85e2-84deaeab0499")
 		)
 		(instances
@@ -44077,7 +44950,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:Q_NPN")
+		(lib_id "Transistor_BJT:Q_NPN_EBC")
 		(at 226.06 119.38 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -44086,7 +44959,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "f6e9fc61-ecac-4573-a373-a66020e1e1dc")
-		(property "Reference" "Q14"
+		(property "Reference" "Q15"
 			(at 231.14 118.1099 0)
 			(effects
 				(font
@@ -44122,7 +44995,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "NPN bipolar junction transistor"
+		(property "Description" "NPN transistor, emitter/base/collector"
 			(at 226.06 119.38 0)
 			(effects
 				(font
@@ -44131,26 +45004,26 @@
 				(hide yes)
 			)
 		)
-		(pin "C"
+		(pin "1"
 			(uuid "237143c2-1b03-4531-a80f-b4f9edba1772")
 		)
-		(pin "E"
+		(pin "3"
 			(uuid "e1112d25-87a4-41cc-b52b-1f72ac160b80")
 		)
-		(pin "B"
+		(pin "2"
 			(uuid "3006473f-d1bb-4faf-a16f-df9f2176f11a")
 		)
 		(instances
 			(project "clock"
 				(path "/81fe6255-7db2-4e1e-90bf-860defad696b"
-					(reference "Q14")
+					(reference "Q15")
 					(unit 1)
 				)
 			)
 		)
 	)
 	(symbol
-		(lib_id "Device:Q_NPN")
+		(lib_id "Transistor_BJT:Q_NPN_EBC")
 		(at 99.06 276.86 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -44159,7 +45032,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "f8eae95c-a727-4de0-9257-51ecbbf74568")
-		(property "Reference" "Q27"
+		(property "Reference" "Q34"
 			(at 104.14 275.5899 0)
 			(effects
 				(font
@@ -44195,7 +45068,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "NPN bipolar junction transistor"
+		(property "Description" "NPN transistor, emitter/base/collector"
 			(at 99.06 276.86 0)
 			(effects
 				(font
@@ -44204,26 +45077,26 @@
 				(hide yes)
 			)
 		)
-		(pin "C"
+		(pin "3"
 			(uuid "1c37521d-e427-4a2f-ab29-59eec185a2e6")
 		)
-		(pin "E"
+		(pin "1"
 			(uuid "71794a73-7eef-43e3-9f05-08c20f8d514f")
 		)
-		(pin "B"
+		(pin "2"
 			(uuid "d7ade536-9116-41de-a2d5-4ccf00a7e84a")
 		)
 		(instances
 			(project "clock"
 				(path "/81fe6255-7db2-4e1e-90bf-860defad696b"
-					(reference "Q27")
+					(reference "Q34")
 					(unit 1)
 				)
 			)
 		)
 	)
 	(symbol
-		(lib_id "Device:Q_NPN")
+		(lib_id "Transistor_BJT:Q_NPN_EBC")
 		(at 73.66 119.38 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -44232,7 +45105,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "f9550469-bbc7-4f74-91a0-832b6e716aec")
-		(property "Reference" "Q8"
+		(property "Reference" "Q9"
 			(at 78.74 118.1099 0)
 			(effects
 				(font
@@ -44268,7 +45141,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "NPN bipolar junction transistor"
+		(property "Description" "NPN transistor, emitter/base/collector"
 			(at 73.66 119.38 0)
 			(effects
 				(font
@@ -44277,19 +45150,19 @@
 				(hide yes)
 			)
 		)
-		(pin "C"
+		(pin "3"
 			(uuid "af769703-3464-4cc2-ba1b-05232e96df03")
 		)
-		(pin "E"
+		(pin "1"
 			(uuid "99ff311a-2c12-48c8-a55c-56c0b6f2e7c8")
 		)
-		(pin "B"
+		(pin "2"
 			(uuid "082ef69d-70bd-4e5a-a0b6-b89bfdd3e238")
 		)
 		(instances
 			(project ""
 				(path "/81fe6255-7db2-4e1e-90bf-860defad696b"
-					(reference "Q8")
+					(reference "Q9")
 					(unit 1)
 				)
 			)
@@ -44366,7 +45239,7 @@
 		)
 	)
 	(symbol
-		(lib_id "Device:Q_NPN")
+		(lib_id "Transistor_BJT:Q_NPN_EBC")
 		(at 73.66 276.86 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -44375,7 +45248,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "fa02a67d-8a9a-444c-8043-82ea04b7eb41")
-		(property "Reference" "Q25"
+		(property "Reference" "Q33"
 			(at 78.74 275.5899 0)
 			(effects
 				(font
@@ -44411,7 +45284,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "NPN bipolar junction transistor"
+		(property "Description" "NPN transistor, emitter/base/collector"
 			(at 73.66 276.86 0)
 			(effects
 				(font
@@ -44420,26 +45293,26 @@
 				(hide yes)
 			)
 		)
-		(pin "C"
+		(pin "2"
 			(uuid "ee45e3bd-faee-4065-994f-dbf0475696b4")
 		)
-		(pin "E"
+		(pin "3"
 			(uuid "be435f80-41aa-4efb-afb7-210e2593e666")
 		)
-		(pin "B"
+		(pin "1"
 			(uuid "af9225a1-d410-45d4-8e71-e5c341e540b7")
 		)
 		(instances
 			(project "clock"
 				(path "/81fe6255-7db2-4e1e-90bf-860defad696b"
-					(reference "Q25")
+					(reference "Q33")
 					(unit 1)
 				)
 			)
 		)
 	)
 	(symbol
-		(lib_id "Device:Q_PNP")
+		(lib_id "Transistor_BJT:Q_PNP_BCE")
 		(at 224.79 49.53 0)
 		(unit 1)
 		(exclude_from_sim no)
@@ -44448,7 +45321,7 @@
 		(dnp no)
 		(fields_autoplaced yes)
 		(uuid "fa6f16e4-22f9-42b3-8848-a078d5ff6227")
-		(property "Reference" "Q46"
+		(property "Reference" "Q8"
 			(at 229.87 48.2599 0)
 			(effects
 				(font
@@ -44457,7 +45330,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "Q_PNP"
+		(property "Value" "TIP127"
 			(at 229.87 50.7999 0)
 			(effects
 				(font
@@ -44484,7 +45357,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "PNP bipolar junction transistor"
+		(property "Description" "PNP transistor, base/collector/emitter"
 			(at 224.79 49.53 0)
 			(effects
 				(font
@@ -44493,19 +45366,19 @@
 				(hide yes)
 			)
 		)
-		(pin "E"
+		(pin "1"
 			(uuid "4fb5bb1b-4532-4ed9-97a2-0459c3870497")
 		)
-		(pin "C"
+		(pin "3"
 			(uuid "a1e1b60a-7f42-4507-8c51-63880264288a")
 		)
-		(pin "B"
+		(pin "2"
 			(uuid "be799ae6-66ff-47a9-a333-958ef509c520")
 		)
 		(instances
 			(project "clock"
 				(path "/81fe6255-7db2-4e1e-90bf-860defad696b"
-					(reference "Q46")
+					(reference "Q8")
 					(unit 1)
 				)
 			)
@@ -44672,7 +45545,7 @@
 				)
 			)
 		)
-		(property "Footprint" "Display_7Segment:DA56-11CGKWA"
+		(property "Footprint" "Parts:DIPS2200W51P254L3580H1000Q18N"
 			(at 458.978 416.56 0)
 			(effects
 				(font

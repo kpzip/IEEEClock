@@ -13,7 +13,7 @@
 
 #define BRIGHTNESS_ADJ PIN_A0
 
-#define SHIFT_DELAY_US 1
+#define SHIFT_DELAY_US 0
 
 const DateTime compile_time(__DATE__, __TIME__);
 static DateTime now;

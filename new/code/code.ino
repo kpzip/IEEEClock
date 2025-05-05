@@ -35,7 +35,7 @@ void setup() {
 
   digitalWrite(SEGMENT_CLK, LOW);
   digitalWrite(DIGIT_CLK, LOW);
-  analogWrite(OUTPUT_ENABLE, 127);
+  digitalWrite(OUTPUT_ENABLE, HIGH);
   digitalWrite(RESET, LOW);
   digitalWrite(SERIAL_DATA, LOW);
 
@@ -52,13 +52,8 @@ void setup() {
   now = rtc.now();
   difference = now - compile_time;
 
-  TCCR2A = 0;
-  TCCR2B = 0;
-  TCCR2B |= 0b00000100;
-  TCNT2 = 0;
-
   // Uncomment the following lines to set the time and date
-  // rtc.adjust(DateTime(2025, 5, 1, 12, 0, 0)); // Set to May 1, 2025, 12:00:00
+  //rtc.adjust(compile_time);
 }
 
 void write_bit(uint8_t bit, uint8_t clock_pin) {
@@ -128,8 +123,13 @@ bool c_has_segment(char c, char index) {
 
 
 void loop() {
-  int brightness = analogRead(BRIGHTNESS_ADJ);
-  analogWrite(OUTPUT_ENABLE, brightness/4);
+  int brightness = 1024 - analogRead(BRIGHTNESS_ADJ);
+  //analogWrite(OUTPUT_ENABLE, brightness/4);
+  now = rtc.now();
+  difference = now - compile_time;
+  sprintf(top_line, "%4d%2d%2d%2d%2d%2d", now.year(), now.month(), now.day(), now.hour(), now.minute(), now.second());
+  sprintf(bottom_line, "%4d%2d%2d%2d%2d%2d", compile_time.year(), compile_time.month(), compile_time.day(), compile_time.hour(), compile_time.minute(), compile_time.second());
+  sprintf(diff_line, "%4d%2d%2d%2d", difference.days(), difference.hours(), difference.minutes(), difference.seconds());
 
   // For each segment
   for (int i = 0; i < 7; i++) {
@@ -162,20 +162,18 @@ void loop() {
     //   if (counter > 1000) break;
     //   counter += 1;
     // }
-    if (i == 6) {
-      // Final Iteration, get ready for next time
-      TCNT2 = 0;
-      now = rtc.now();
-      difference = now - compile_time;
-      sprintf(top_line, "%4d%2d%2d%2d%2d%2d", now.year(), now.month(), now.day(), now.hour(), now.minute(), now.second());
-      sprintf(bottom_line, "%4d%2d%2d%2d%2d%2d", compile_time.year(), compile_time.month(), compile_time.day(), compile_time.hour(), compile_time.minute(), compile_time.second());
-      sprintf(diff_line, "%4d%2d%2d%2d", difference.days(), difference.hours(), difference.minutes(), difference.seconds());
-      while(TCNT2 < 250) {
-        ;
-      }
+    long time_on = brightness;
+    //long clocks_on = brightness / 4;
+    long time_off = 1024 - time_on;
+    if (time_off >= 100) {
+      time_off -= 100;
     } else {
-      delayMicroseconds(2000);
+      time_off = 0;
     }
+    digitalWrite(OUTPUT_ENABLE, LOW);
+    delayMicroseconds(time_on);
+    digitalWrite(OUTPUT_ENABLE, HIGH);
+    delayMicroseconds(time_off);
 
     // Reset the shift registers
     digitalWrite(RESET, HIGH);
