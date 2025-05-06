@@ -375,6 +375,267 @@
 			)
 			(embedded_fonts no)
 		)
+		(symbol "Connector:AVR-ISP-6"
+			(pin_names
+				(offset 1.016)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "J"
+				(at -6.35 11.43 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Value" "AVR-ISP-6"
+				(at 0 11.43 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(justify left)
+				)
+			)
+			(property "Footprint" ""
+				(at -6.35 1.27 90)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at -32.385 -13.97 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Atmel 6-pin ISP connector"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "AVR ISP Connector"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "IDC?Header*2x03* Pin?Header*2x03*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "AVR-ISP-6_0_1"
+				(rectangle
+					(start -2.667 10.16)
+					(end -2.413 9.398)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start -2.667 -6.858)
+					(end -2.413 -7.62)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start 7.62 10.16)
+					(end -7.62 -7.62)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+				(rectangle
+					(start 7.62 5.207)
+					(end 6.858 4.953)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start 7.62 2.667)
+					(end 6.858 2.413)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start 7.62 0.127)
+					(end 6.858 -0.127)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(rectangle
+					(start 7.62 -2.413)
+					(end 6.858 -2.667)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "AVR-ISP-6_1_1"
+				(pin passive line
+					(at -2.54 12.7 270)
+					(length 2.54)
+					(name "VCC"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -2.54 -10.16 90)
+					(length 2.54)
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "6"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 10.16 5.08 180)
+					(length 2.54)
+					(name "MISO"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 10.16 2.54 180)
+					(length 2.54)
+					(name "MOSI"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 10.16 0 180)
+					(length 2.54)
+					(name "SCK"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 10.16 -2.54 180)
+					(length 2.54)
+					(name "~{RST}"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "Connector:Barrel_Jack"
 			(pin_names
 				(offset 1.016)
@@ -1122,196 +1383,6 @@
 						)
 					)
 					(number "5"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-			)
-			(embedded_fonts no)
-		)
-		(symbol "Connector:Conn_PIC_ICSP_ICD"
-			(exclude_from_sim no)
-			(in_bom yes)
-			(on_board yes)
-			(property "Reference" "J"
-				(at 6.35 8.89 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Value" "Conn_PIC_ICSP_ICD"
-				(at -8.89 -1.27 90)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-				)
-			)
-			(property "Footprint" ""
-				(at 1.27 3.81 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Datasheet" "http://ww1.microchip.com/downloads/en/devicedoc/30277d.pdf"
-				(at -7.62 -3.81 90)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "Description" "Microchip PIC In-Circuit Serial Programming/Debugging (ICSP/ICD) connector"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_keywords" "icsp icd pic microchip"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(property "ki_fp_filters" "PinHeader*1x06*P2.54mm* PinSocket*1x06*P2.54mm*"
-				(at 0 0 0)
-				(effects
-					(font
-						(size 1.27 1.27)
-					)
-					(hide yes)
-				)
-			)
-			(symbol "Conn_PIC_ICSP_ICD_0_1"
-				(rectangle
-					(start -7.62 7.62)
-					(end 10.16 -7.62)
-					(stroke
-						(width 0.254)
-						(type default)
-					)
-					(fill
-						(type background)
-					)
-				)
-			)
-			(symbol "Conn_PIC_ICSP_ICD_1_1"
-				(pin passive line
-					(at -5.08 10.16 270)
-					(length 2.54)
-					(name "VDD"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "2"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin power_in line
-					(at -5.08 -10.16 90)
-					(length 2.54)
-					(name "VSS"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "3"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
-					(at 12.7 5.08 180)
-					(length 2.54)
-					(name "~{MCLR}/VPP"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "1"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin bidirectional line
-					(at 12.7 0 180)
-					(length 2.54)
-					(name "PGD/ICSPDAT"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "4"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin output line
-					(at 12.7 -2.54 180)
-					(length 2.54)
-					(name "PGC/ICSPCLK"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "5"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin output line
-					(at 12.7 -5.08 180)
-					(length 2.54)
-					(name "PGM/LVP"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "6"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -5028,6 +5099,10 @@
 		(uuid "3bfe4937-c744-40e4-b1ed-4873c1fce26f")
 	)
 	(no_connect
+		(at 308.61 323.85)
+		(uuid "3ccf224a-971c-4742-97e4-735c90824dc8")
+	)
+	(no_connect
 		(at 382.27 264.16)
 		(uuid "47523851-c6b0-4c71-b790-a306359f51bb")
 	)
@@ -5048,20 +5123,8 @@
 		(uuid "88a442f9-9fc5-4e88-a73b-399db0231f92")
 	)
 	(no_connect
-		(at 308.61 323.85)
-		(uuid "97cb62ae-d48c-4077-b02e-cf6690ac4f8f")
-	)
-	(no_connect
 		(at 382.27 299.72)
 		(uuid "d452ea08-16f1-4b83-ab1a-c25e5dcbd7ee")
-	)
-	(no_connect
-		(at 382.27 276.86)
-		(uuid "dd0458e9-e8ce-4801-a4e4-e27d2a48f6f7")
-	)
-	(no_connect
-		(at 382.27 251.46)
-		(uuid "e324a6cc-2702-456c-bd5c-798ceda9a1e6")
 	)
 	(wire
 		(pts
@@ -6565,7 +6628,7 @@
 	)
 	(wire
 		(pts
-			(xy 443.23 302.26) (xy 443.23 306.07)
+			(xy 445.77 302.26) (xy 445.77 306.07)
 		)
 		(stroke
 			(width 0)
@@ -7935,6 +7998,16 @@
 	)
 	(wire
 		(pts
+			(xy 382.27 251.46) (xy 387.35 251.46)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5a79b81b-a29b-497f-a8b1-5ad1585e77df")
+	)
+	(wire
+		(pts
 			(xy 217.17 208.28) (xy 217.17 213.36)
 		)
 		(stroke
@@ -8952,6 +9025,16 @@
 			(type default)
 		)
 		(uuid "7d471821-1038-49ca-bb7d-aae5ccea2775")
+	)
+	(wire
+		(pts
+			(xy 458.47 289.56) (xy 464.82 289.56)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7d52b881-a7cd-45dc-8b42-35f495709895")
 	)
 	(wire
 		(pts
@@ -10235,6 +10318,16 @@
 	)
 	(wire
 		(pts
+			(xy 458.47 292.1) (xy 464.82 292.1)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a0a56cc2-f967-4b6d-90b8-94213710fee4")
+	)
+	(wire
+		(pts
 			(xy 289.56 441.96) (xy 294.64 441.96)
 		)
 		(stroke
@@ -10632,6 +10725,16 @@
 			(type default)
 		)
 		(uuid "ae13acc0-d77d-416b-865c-24e1cbfc6e66")
+	)
+	(wire
+		(pts
+			(xy 458.47 294.64) (xy 464.82 294.64)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ae1fdcdb-7a72-40be-bf49-94deb52ca353")
 	)
 	(wire
 		(pts
@@ -11412,6 +11515,16 @@
 			(type default)
 		)
 		(uuid "c2734aba-a785-4c6a-be56-97ffd2305044")
+	)
+	(wire
+		(pts
+			(xy 458.47 287.02) (xy 464.82 287.02)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c2bd140f-36c2-4d21-9a78-111f8636a19f")
 	)
 	(wire
 		(pts
@@ -13405,7 +13518,7 @@
 	)
 	(wire
 		(pts
-			(xy 443.23 278.13) (xy 443.23 281.94)
+			(xy 445.77 275.59) (xy 445.77 279.4)
 		)
 		(stroke
 			(width 0)
@@ -13462,6 +13575,16 @@
 			(type default)
 		)
 		(uuid "fa827086-ef77-4054-971d-0dd0c86bedc4")
+	)
+	(wire
+		(pts
+			(xy 382.27 276.86) (xy 387.35 276.86)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fa9396ff-9d6c-4c21-9375-ba961bb6f476")
 	)
 	(wire
 		(pts
@@ -15248,6 +15371,28 @@
 		(uuid "1c6bd40a-470a-41fa-97bf-118f01cd8825")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 228.6 247.3863 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "RCLK"
+		(shape input)
+		(at 464.82 289.56 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "1c6c8a03-f86d-42fa-ba51-15f4aa84dd60")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 472.6433 289.56 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -17228,6 +17373,28 @@
 		(uuid "49edc9d3-f986-4e00-94c4-cad559ce5c74")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 333.4876 474.98 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "RESET"
+		(shape input)
+		(at 464.82 294.64 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "4a053630-4ada-4fc2-8950-f8f297614e61")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 473.5503 294.64 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -19371,6 +19538,28 @@
 			)
 		)
 	)
+	(global_label "SCK"
+		(shape input)
+		(at 464.82 292.1 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "77551818-94ce-4656-b51b-55082635d21e")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 471.5547 292.1 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
 	(global_label "DIG_B"
 		(shape input)
 		(at 529.59 436.88 180)
@@ -19503,6 +19692,28 @@
 			)
 		)
 	)
+	(global_label "SCK"
+		(shape input)
+		(at 387.35 251.46 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "7b183352-186a-4fc1-bcda-c2eab34dfb11")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 394.0847 251.46 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
 	(global_label "DIG_F"
 		(shape input)
 		(at 284.48 485.14 180)
@@ -19582,6 +19793,28 @@
 		(uuid "7e3f09d9-aa82-4820-88ec-d55639e8a3fb")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
 			(at 486.9762 402.59 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
+	(global_label "SER"
+		(shape input)
+		(at 464.82 287.02 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "80da9fba-39be-4b61-b9e6-b7a1d9c72e91")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 471.4337 287.02 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23155,6 +23388,28 @@
 			)
 		)
 	)
+	(global_label "RESET"
+		(shape input)
+		(at 387.35 276.86 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left)
+		)
+		(uuid "d5c4d8dc-3a95-49dd-a8cc-5c09c6595604")
+		(property "Intersheetrefs" "${INTERSHEET_REFS}"
+			(at 396.0803 276.86 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+				(hide yes)
+			)
+		)
+	)
 	(global_label "DP"
 		(shape input)
 		(at 347.98 452.12 180)
@@ -25992,7 +26247,7 @@
 	)
 	(symbol
 		(lib_id "power:GND")
-		(at 443.23 306.07 0)
+		(at 445.77 306.07 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -26001,7 +26256,7 @@
 		(fields_autoplaced yes)
 		(uuid "0975803c-a6c4-4a96-a446-8573ab329942")
 		(property "Reference" "#PWR088"
-			(at 443.23 312.42 0)
+			(at 445.77 312.42 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26010,7 +26265,7 @@
 			)
 		)
 		(property "Value" "GND"
-			(at 443.23 311.15 0)
+			(at 445.77 311.15 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26018,7 +26273,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 443.23 306.07 0)
+			(at 445.77 306.07 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26027,7 +26282,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 443.23 306.07 0)
+			(at 445.77 306.07 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26036,7 +26291,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"GND\" , ground"
-			(at 443.23 306.07 0)
+			(at 445.77 306.07 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -31519,7 +31774,7 @@
 	)
 	(symbol
 		(lib_id "power:VCC")
-		(at 443.23 278.13 0)
+		(at 445.77 275.59 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
@@ -31527,7 +31782,7 @@
 		(dnp no)
 		(uuid "4fbd188a-d5b0-4e46-91aa-d98cea729dcf")
 		(property "Reference" "#PWR087"
-			(at 443.23 281.94 0)
+			(at 445.77 279.4 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -31536,7 +31791,7 @@
 			)
 		)
 		(property "Value" "VCC"
-			(at 443.23 274.066 0)
+			(at 445.77 271.526 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -31544,7 +31799,7 @@
 			)
 		)
 		(property "Footprint" ""
-			(at 443.23 278.13 0)
+			(at 445.77 275.59 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -31553,7 +31808,7 @@
 			)
 		)
 		(property "Datasheet" ""
-			(at 443.23 278.13 0)
+			(at 445.77 275.59 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -31562,7 +31817,7 @@
 			)
 		)
 		(property "Description" "Power symbol creates a global label with name \"VCC\""
-			(at 443.23 278.13 0)
+			(at 445.77 275.59 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -41743,17 +41998,16 @@
 		)
 	)
 	(symbol
-		(lib_id "Connector:Conn_PIC_ICSP_ICD")
+		(lib_id "Connector:AVR-ISP-6")
 		(at 448.31 292.1 0)
 		(unit 1)
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
 		(dnp no)
-		(fields_autoplaced yes)
 		(uuid "cdc3d80e-d131-494f-9e19-59851a78ced0")
 		(property "Reference" "J4"
-			(at 439.42 290.8299 0)
+			(at 439.42 289.5599 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -41762,7 +42016,7 @@
 			)
 		)
 		(property "Value" "Conn_PIC_ICSP_ICD"
-			(at 439.42 293.3699 0)
+			(at 466.852 302.768 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -41770,8 +42024,8 @@
 				(justify right)
 			)
 		)
-		(property "Footprint" ""
-			(at 449.58 288.29 0)
+		(property "Footprint" "Connector_IDC:IDC-Header_2x03_P2.54mm_Vertical"
+			(at 441.96 290.83 90)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -41779,8 +42033,8 @@
 				(hide yes)
 			)
 		)
-		(property "Datasheet" "http://ww1.microchip.com/downloads/en/devicedoc/30277d.pdf"
-			(at 440.69 295.91 90)
+		(property "Datasheet" "~"
+			(at 415.925 306.07 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -41788,7 +42042,7 @@
 				(hide yes)
 			)
 		)
-		(property "Description" "Microchip PIC In-Circuit Serial Programming/Debugging (ICSP/ICD) connector"
+		(property "Description" "Atmel 6-pin ISP connector"
 			(at 448.31 292.1 0)
 			(effects
 				(font
