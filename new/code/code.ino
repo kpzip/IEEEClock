@@ -1,37 +1,76 @@
 #include <Wire.h>
 #include <RTClib.h>
 
+// Constants
 #define TOP_LEN 14
 #define BOTTOM_LEN 14
 #define DIFF_LEN 10
 
+#define SHIFT_DELAY_US 1
+
+// Settings
+#define USE_FULLER_6
+#define LEADING_ZEROS
+
+// Pin numbers
 #define SEGMENT_CLK 8
 #define DIGIT_CLK 9
 #define OUTPUT_ENABLE 10
 #define RESET 11
 #define SERIAL_DATA 12
 
+#define INC 0
+#define DEC 1
+#define UP 2
+#define DOWN 3
+#define LEFT 4
+#define RIGHT 5
+#define SET_ENABLE 6
+#define MODE 7
+
 #define BRIGHTNESS_ADJ PIN_A0
 
-#define SHIFT_DELAY_US 1
-
+// Values
 const DateTime compile_time(__DATE__, __TIME__);
 static DateTime now;
+static DateTime travel_time = compile_time;
 static TimeSpan difference;
 
 static char top_line[TOP_LEN + 1] = { 0 };
 static char bottom_line[BOTTOM_LEN + 1] = { 0 };
 static char diff_line[DIFF_LEN + 1] = { 0 };
 
+// State
+static bool is_setting_time = false;
+static bool is_12_hr = false;
+static uint8_t cursor_line;
+// 0 is top row, 1 is middle row, 2 is difference row
+static uint8_t cursor_row = 0;
+// 0 is rightmost side
+static uint8_t cursor_column = 0;
+
+
 RTC_DS1307 rtc; // DS1307 I2C address
 
 void setup() {
   Serial.begin(9600);
+
+  // Clock Data Pins
   pinMode(SEGMENT_CLK, OUTPUT);
   pinMode(DIGIT_CLK, OUTPUT);
   pinMode(OUTPUT_ENABLE, OUTPUT);
   pinMode(RESET, OUTPUT);
   pinMode(SERIAL_DATA, OUTPUT);
+
+  // Settings pins
+  pinMode(INC, INPUT_PULLUP);
+  pinMode(DEC, INPUT_PULLUP);
+  pinMode(UP, INPUT_PULLUP);
+  pinMode(DOWN, INPUT_PULLUP);
+  pinMode(LEFT, INPUT_PULLUP);
+  pinMode(RIGHT, INPUT_PULLUP);
+  pinMode(SET_ENABLE, INPUT_PULLUP);
+  pinMode(MODE, INPUT_PULLUP);
 
   digitalWrite(SEGMENT_CLK, LOW);
   digitalWrite(DIGIT_CLK, LOW);
@@ -120,16 +159,153 @@ bool c_has_segment(char c, char index) {
   return false;
 }
 
-
+void change_row_by(int8_t change) {
+  DateTime *row;
+  switch(cursor_row) {
+  case 0:
+    row = &now;
+    break;
+  case 1:
+    row = &travel_time;
+    break;
+  case 2:
+    row = &now;
+    break;
+  default:
+    return;
+  }
+  TimeSpan adjust_by;
+  switch(cursor_column) {
+  case 0:
+    // Seconds ones place
+    adjust_by = TimeSpan(0, 0, 0, change);
+    break;
+  case 1:
+    // Seconds tens place
+    adjust_by = TimeSpan(0, 0, 0, 10 * change);
+    break;
+  case 2:
+    // Minutes ones place
+    adjust_by = TimeSpan(0, 0, change, 0);
+    break;
+  case 3:
+    // Minutes tens place
+    adjust_by = TimeSpan(0, 0, 10 * change, 0);
+    break;
+  case 4:
+    // Hours ones place
+    adjust_by = TimeSpan(0, change, 0, 0);
+    break;
+  case 5:
+    // Hours tens place
+    adjust_by = TimeSpan(0, 10 * change, 0, 0);
+    break;
+  case 6:
+    // Days ones place
+    adjust_by = TimeSpan(change, 0, 0, 0);
+    break;
+  case 7:
+    // Days tens place
+    adjust_by = TimeSpan(10 * change, 0, 0, 0);
+    break;
+  case 8:
+    if (cursor_row == 2) {
+      // Days hundreds place
+      adjust_by = TimeSpan(100 * (int16_t)change, 0, 0, 0);
+      break;
+    }
+    else {
+      // Months ones place
+      
+      return;
+    }
+    break;
+  case 9:
+    if (cursor_row == 2) {
+      // Days thousands place
+      adjust_by = TimeSpan(1000 * (int16_t)change, 0, 0, 0);
+      break;
+    }
+    else {
+      // Months tens place
+      
+      return;
+    }
+    break;
+  }
+  *row = row + adjust_by;
+}
 
 void loop() {
+  // Read in pin data
   int brightness = 1024 - analogRead(BRIGHTNESS_ADJ);
-  //analogWrite(OUTPUT_ENABLE, brightness/4);
+  is_12_hr = digitalRead(MODE) == LOW;
+  is_setting_time = digitalRead(SET_ENABLE) == HIGH;
+  if (is_setting_time) {
+    bool inc = digitalRead(INC) == LOW;
+    bool dec = digitalRead(DEC) == LOW;
+    bool up = digitalRead(UP) == LOW;
+    bool down = digitalRead(DOWN) == DOWN;
+    bool left = digitalRead(LEFT) == LEFT;
+    bool right = digitalRead(RIGHT) == RIGHT;
+    if (up && cursor_row != 0) {
+      cursor_row--;
+    }
+    else if (down && cursor_row != 2) {
+      cursor_row++;
+      if (cursor_row == 2 && cursor_column >= DIFF_LEN) {
+        cursor_column = DIFF_LEN - 1;
+      }
+    }
+    else if (left && ((cursor_column < BOTTOM_LEN - 1 && cursor_row < 2) || (cursor_column < DIFF_LEN - 1 && cursor_row == 2))) {
+      cursor_column++;
+    }
+    else if (right && cursor_column < 0) {
+      cursor_column--;
+    }
+
+    else if (inc) {
+      change_row_by(1);
+    }
+    else if (dec) {
+      change_row_by(-1);
+    }
+
+
+  }
+  
+
+  
   now = rtc.now();
-  difference = now - compile_time;
-  sprintf(top_line, "%4d%2d%2d%2d%2d%2d", now.year(), now.month(), now.day(), now.hour(), now.minute(), now.second());
-  sprintf(bottom_line, "%4d%2d%2d%2d%2d%2d", compile_time.year(), compile_time.month(), compile_time.day(), compile_time.hour(), compile_time.minute(), compile_time.second());
-  sprintf(diff_line, "%4d%2d%2d%2d", difference.days(), difference.hours(), difference.minutes(), difference.seconds());
+  auto second_time = travel_time;
+  difference = now - second_time;
+
+  // Top row led values
+  uint16_t top_year = now.year();
+  uint8_t top_month = now.month();
+  uint8_t top_day = now.day();
+  uint8_t top_hour = now.hour();
+  uint8_t top_minute = now.minute();
+  uint8_t top_second = now.second();
+
+  // Bottom row led values
+  uint16_t bottom_year = second_time.year();
+  uint8_t bottom_month = second_time.month();
+  uint8_t bottom_day = second_time.day();
+  uint8_t bottom_hour = second_time.hour();
+  uint8_t bottom_minute = second_time.minute();
+  uint8_t bottom_second = second_time.second();
+
+  // Difference
+  uint16_t difference_days = difference.days();
+  uint8_t difference_hours = difference.hours();
+  uint8_t difference_minute = difference.minutes();
+  uint8_t difference_second = difference.seconds();
+
+
+  sprintf(top_line, "%4d%2d%2d%2d%2d%2d", top_year, top_month, top_day, top_hour, top_minute, top_second);
+  sprintf(bottom_line, "%4d%2d%2d%2d%2d%2d", bottom_year, bottom_month, bottom_day, bottom_hour, bottom_minute, bottom_second);
+  sprintf(diff_line, "%4d%2d%2d%2d", difference_days, difference_hours, difference_minutes, difference_seconds);
 
   // For each segment
   for (int i = 0; i < 7; i++) {

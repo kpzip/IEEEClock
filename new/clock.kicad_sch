@@ -13604,7 +13604,7 @@
 			)
 		)
 	)
-	(global_label "Mode"
+	(global_label "MODE"
 		(shape input)
 		(at 387.35 299.72 0)
 		(fields_autoplaced yes)
@@ -13616,7 +13616,7 @@
 		)
 		(uuid "02e336bc-13e5-4bae-92c8-83a2ec1979c4")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 395.1732 299.72 0)
+			(at 395.5361 299.72 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -13978,7 +13978,7 @@
 			)
 		)
 	)
-	(global_label "Mode"
+	(global_label "MODE"
 		(shape input)
 		(at 581.66 222.25 0)
 		(fields_autoplaced yes)
@@ -13990,7 +13990,7 @@
 		)
 		(uuid "0aba21b2-96b6-4d10-bb9d-0b4e6651b9d3")
 		(property "Intersheetrefs" "${INTERSHEET_REFS}"
-			(at 589.4832 222.25 0)
+			(at 589.8461 222.25 0)
 			(effects
 				(font
 					(size 1.27 1.27)
