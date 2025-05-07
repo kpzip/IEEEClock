@@ -29669,7 +29669,7 @@
 				)
 			)
 		)
-		(property "Value" "Set"
+		(property "Value" "12/24"
 			(at 0 3.81 0)
 			(layer "F.Fab")
 			(uuid "2f64ebbb-c4eb-41f0-ad88-8b2faf579527")
@@ -51567,6 +51567,16 @@
 		(uuid "3df6a8a1-714e-4fcd-8054-4b41a5513f1b")
 	)
 	(gr_line
+		(start 63 131.5)
+		(end 63 130.5)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "5c68f4ea-ac59-44c2-8f56-8e57b4cd7b94")
+	)
+	(gr_line
 		(start 131.25 161.25)
 		(end 124.25 161.25)
 		(stroke
@@ -51608,6 +51618,16 @@
 		(layer "F.SilkS")
 		(uuid "88b1ec5a-0517-4914-8c9e-c3b7c78025c8")
 	)
+	(gr_line
+		(start 58 131.5)
+		(end 52.5 131.5)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "a04e3f11-c177-4d11-bdae-4551f71a1a81")
+	)
 	(gr_arc
 		(start 119 142.25)
 		(mid 131.274515 132.247524)
@@ -51618,6 +51638,16 @@
 		)
 		(layer "F.SilkS")
 		(uuid "b39eeb22-cb74-40e9-aa69-44420954e590")
+	)
+	(gr_line
+		(start 58 131.5)
+		(end 63 131.5)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "c4c0be19-de97-41f2-b940-e1d7fd535abe")
 	)
 	(gr_line
 		(start 131.25 161.25)
@@ -51648,6 +51678,16 @@
 		)
 		(layer "F.SilkS")
 		(uuid "ebca5eec-0703-49c3-8878-166c761ac389")
+	)
+	(gr_line
+		(start 52.5 131.5)
+		(end 52.5 130.5)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(layer "F.SilkS")
+		(uuid "f3ed0ced-1937-42be-acfc-13f289a760d9")
 	)
 	(gr_line
 		(start 138.25 161.25)
@@ -51764,6 +51804,18 @@
 				(thickness 0.1)
 			)
 			(justify top)
+		)
+	)
+	(gr_text "24Hr"
+		(at 63 130 0)
+		(layer "F.SilkS")
+		(uuid "30bb822a-38b4-4374-98f6-3c076f7597ef")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+			(justify bottom)
 		)
 	)
 	(gr_text "Lock\n"
@@ -51883,6 +51935,18 @@
 				(thickness 0.1)
 			)
 			(justify left bottom)
+		)
+	)
+	(gr_text "12Hr"
+		(at 52.5 130 0)
+		(layer "F.SilkS")
+		(uuid "a892fc1c-31d2-4da0-b5bc-843cb422dbcb")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.1)
+			)
+			(justify bottom)
 		)
 	)
 	(gr_text "Down"
