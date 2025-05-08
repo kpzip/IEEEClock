@@ -61012,8 +61012,8 @@
 			(justify bottom)
 		)
 	)
-	(gr_text "Designed by Kyle Schmerge in association with UCSB IEEE.\nwww.github.com/kpzip\nwww.ucsbieee.org"
-		(at 70.5 166.5 0)
+	(gr_text "Designed by Kyle Schmerge in association with UCSB IEEE\nwww.github.com/kpzip\nwww.ucsbieee.org\nRevision 1.0"
+		(at 70.5 168 0)
 		(layer "F.SilkS")
 		(uuid "d011e39a-c9b8-49d9-9a2a-278d8c61593f")
 		(effects
