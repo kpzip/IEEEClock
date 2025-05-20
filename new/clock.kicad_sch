@@ -41925,8 +41925,8 @@
 				(justify right)
 			)
 		)
-		(property "Value" "Conn_PIC_ICSP_ICD"
-			(at 466.852 302.768 0)
+		(property "Value" "AVR_ISP"
+			(at 456.692 302.006 0)
 			(effects
 				(font
 					(size 1.27 1.27)

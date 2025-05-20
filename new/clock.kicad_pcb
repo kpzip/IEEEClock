@@ -28875,7 +28875,7 @@
 				)
 			)
 		)
-		(property "Value" "Conn_PIC_ICSP_ICD"
+		(property "Value" "AVR_ISP"
 			(at 6.79 2.08 180)
 			(layer "F.Fab")
 			(uuid "5bb456bc-4e57-4fa2-9faf-0d5f4d8f49ef")
