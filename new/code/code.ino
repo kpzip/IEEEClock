@@ -16,7 +16,7 @@
 #define SEGMENT_CLK 8
 #define DIGIT_CLK 9
 #define OUTPUT_ENABLE 10
-#define RESET 11
+#define PUSH 11
 #define SERIAL_DATA 12
 
 #define INC 0
@@ -59,7 +59,7 @@ void setup() {
   pinMode(SEGMENT_CLK, OUTPUT);
   pinMode(DIGIT_CLK, OUTPUT);
   pinMode(OUTPUT_ENABLE, OUTPUT);
-  pinMode(RESET, OUTPUT);
+  pinMode(PUSH, OUTPUT);
   pinMode(SERIAL_DATA, OUTPUT);
 
   // Settings pins
@@ -75,7 +75,7 @@ void setup() {
   digitalWrite(SEGMENT_CLK, LOW);
   digitalWrite(DIGIT_CLK, LOW);
   digitalWrite(OUTPUT_ENABLE, HIGH);
-  digitalWrite(RESET, LOW);
+  digitalWrite(PUSH, LOW);
   digitalWrite(SERIAL_DATA, LOW);
 
   while (!Serial) {
@@ -233,7 +233,7 @@ void change_row_by(int8_t change) {
     }
     break;
   }
-  *row = row + adjust_by;
+  *row = *row + adjust_by;
 }
 
 void loop() {
@@ -299,8 +299,8 @@ void loop() {
   // Difference
   uint16_t difference_days = difference.days();
   uint8_t difference_hours = difference.hours();
-  uint8_t difference_minute = difference.minutes();
-  uint8_t difference_second = difference.seconds();
+  uint8_t difference_minutes = difference.minutes();
+  uint8_t difference_seconds = difference.seconds();
 
 
   sprintf(top_line, "%4d%2d%2d%2d%2d%2d", top_year, top_month, top_day, top_hour, top_minute, top_second);
@@ -352,9 +352,9 @@ void loop() {
     delayMicroseconds(time_off);
 
     // Reset the shift registers
-    digitalWrite(RESET, HIGH);
+    digitalWrite(PUSH, HIGH);
     delayMicroseconds(SHIFT_DELAY_US);
-    digitalWrite(RESET, LOW);
+    digitalWrite(PUSH, LOW);
     delayMicroseconds(SHIFT_DELAY_US);
   }
 }
