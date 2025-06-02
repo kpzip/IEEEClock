@@ -4,6 +4,11 @@
 	(generator_version "9.0")
 	(uuid "81fe6255-7db2-4e1e-90bf-860defad696b")
 	(paper "A1")
+	(title_block
+		(title "IEEE Clock")
+		(date "2025-06-01")
+		(rev "1.1")
+	)
 	(lib_symbols
 		(symbol "74xx:74HC595"
 			(exclude_from_sim no)
