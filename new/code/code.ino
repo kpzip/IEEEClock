@@ -74,7 +74,7 @@ void setup() {
 
   digitalWrite(SEGMENT_CLK, LOW);
   digitalWrite(DIGIT_CLK, LOW);
-  digitalWrite(OUTPUT_ENABLE, HIGH);
+  //digitalWrite(OUTPUT_ENABLE, HIGH);
   digitalWrite(PUSH, LOW);
   digitalWrite(SERIAL_DATA, LOW);
 
@@ -239,6 +239,9 @@ void change_row_by(int8_t change) {
 void loop() {
   // Read in pin data
   int brightness = 1024 - analogRead(BRIGHTNESS_ADJ);
+
+  analogWrite(OUTPUT_ENABLe, brightness/4);
+
   is_12_hr = digitalRead(MODE) == LOW;
   is_setting_time = digitalRead(SET_ENABLE) == HIGH;
   if (is_setting_time) {
@@ -330,28 +333,7 @@ void loop() {
       write_bit(is_lit, DIGIT_CLK);
     }
 
-    //delayMicroseconds(2000);
-    // Wait for output to go low in order to avoid the lights blinking. REALLY shitty way of doing this but it works with PWM.
-    // int counter = 0;
-    // while (digitalRead(OUTPUT_ENABLE)) {
-    //   delayMicroseconds(1);
-    //   if (counter > 1000) break;
-    //   counter += 1;
-    // }
-    long time_on = brightness;
-    //long clocks_on = brightness / 4;
-    long time_off = 1024 - time_on;
-    if (time_off >= 100) {
-      time_off -= 100;
-    } else {
-      time_off = 0;
-    }
-    digitalWrite(OUTPUT_ENABLE, LOW);
-    delayMicroseconds(time_on);
-    digitalWrite(OUTPUT_ENABLE, HIGH);
-    delayMicroseconds(time_off);
-
-    // Reset the shift registers
+    // Output the data on the shift registers
     digitalWrite(PUSH, HIGH);
     delayMicroseconds(SHIFT_DELAY_US);
     digitalWrite(PUSH, LOW);
