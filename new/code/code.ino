@@ -36,9 +36,9 @@ static DateTime now;
 static DateTime travel_time = compile_time;
 static TimeSpan difference;
 
-static char top_line[TOP_LEN + 1] = { 0 };
-static char bottom_line[BOTTOM_LEN + 1] = { 0 };
-static char diff_line[DIFF_LEN + 1] = { 0 };
+static char top_line[TOP_LEN + 1] = { ' ' };
+static char bottom_line[BOTTOM_LEN + 1] = { ' ' };
+static char diff_line[DIFF_LEN + 1] = { ' ' };
 
 // State
 static bool is_setting_time = false;
@@ -78,6 +78,28 @@ void setup() {
   digitalWrite(PUSH, LOW);
   digitalWrite(SERIAL_DATA, LOW);
 
+  auto second_time = travel_time;
+
+  uint16_t bottom_year = second_time.year();
+  uint8_t bottom_month = second_time.month();
+  uint8_t bottom_day = second_time.day();
+  uint8_t bottom_hour = second_time.hour();
+  uint8_t bottom_minute = second_time.minute();
+  uint8_t bottom_second = second_time.second();
+
+  sprintf(bottom_line, "%4d%2d%2d%2d%2d%2d\0", bottom_year, bottom_month, bottom_day, bottom_hour, bottom_minute, bottom_second);
+  Serial.write(bottom_line);
+  Serial.write("\n");
+
+  for (int i = 0; i < 7; i++) {
+    for (int j = 0; j < BOTTOM_LEN; j++) {
+      char c = bottom_line[j];
+      bool is_lit = c_has_segment(c, i);
+      Serial.print(is_lit);
+    }
+    Serial.print("\n");
+  }
+
   while (!Serial) {
     ; // Wait for serial port to connect (for safety)
   }
@@ -92,7 +114,7 @@ void setup() {
   difference = now - compile_time;
 
   // Uncomment the following lines to set the time and date
-  //rtc.adjust(compile_time);
+  rtc.adjust(compile_time);
 }
 
 void write_bit(uint8_t bit, uint8_t clock_pin) {
@@ -238,10 +260,11 @@ void change_row_by(int8_t change) {
 
 void loop() {
   // Read in pin data
-  int brightness = 1024 - analogRead(BRIGHTNESS_ADJ);
+  int brightness = 1023 - analogRead(BRIGHTNESS_ADJ);
 
-  analogWrite(OUTPUT_ENABLe, brightness/4);
+  analogWrite(OUTPUT_ENABLE, brightness/4);
 
+  /*
   is_12_hr = digitalRead(MODE) == LOW;
   is_setting_time = digitalRead(SET_ENABLE) == HIGH;
   if (is_setting_time) {
@@ -275,9 +298,11 @@ void loop() {
     }
 
 
-  }
+  }*/
   
-
+  bool is_12hr = digitalRead(MODE);
+  bool is_top_pm = false;
+  bool is_bottom_pm = false;
   
   now = rtc.now();
   auto second_time = travel_time;
@@ -288,6 +313,10 @@ void loop() {
   uint8_t top_month = now.month();
   uint8_t top_day = now.day();
   uint8_t top_hour = now.hour();
+  if (is_12_hr && top_hour > 12) {
+    top_hour -= 12;
+    is_top_pm = true;
+  }
   uint8_t top_minute = now.minute();
   uint8_t top_second = now.second();
 
@@ -296,6 +325,10 @@ void loop() {
   uint8_t bottom_month = second_time.month();
   uint8_t bottom_day = second_time.day();
   uint8_t bottom_hour = second_time.hour();
+  if (is_12_hr && bottom_hour > 12) {
+    bottom_hour -= 12;
+    is_bottom_pm = true;
+  }
   uint8_t bottom_minute = second_time.minute();
   uint8_t bottom_second = second_time.second();
 
@@ -306,16 +339,16 @@ void loop() {
   uint8_t difference_seconds = difference.seconds();
 
 
-  sprintf(top_line, "%4d%2d%2d%2d%2d%2d", top_year, top_month, top_day, top_hour, top_minute, top_second);
-  sprintf(bottom_line, "%4d%2d%2d%2d%2d%2d", bottom_year, bottom_month, bottom_day, bottom_hour, bottom_minute, bottom_second);
-  sprintf(diff_line, "%4d%2d%2d%2d", difference_days, difference_hours, difference_minutes, difference_seconds);
+  sprintf(top_line, "%4d%2d%2d%2d%02d%02d", top_year, top_month, top_day, top_hour, top_minute, top_second);
+  sprintf(bottom_line, "%4d%2d%2d%2d%02d%02d", bottom_year, bottom_month, bottom_day, bottom_hour, bottom_minute, bottom_second);
+  sprintf(diff_line, "%4d%2d%02d%02d", difference_days, difference_hours, difference_minutes, difference_seconds);
 
   // For each segment
   for (int i = 0; i < 7; i++) {
     write_segment(i);
     // Top light and bottom light
-    write_bit(0, DIGIT_CLK);
-    write_bit(1, DIGIT_CLK);
+    write_bit(is_bottom_pm, DIGIT_CLK);
+    write_bit(is_top_pm, DIGIT_CLK);
     // diff row first
     for (int j = 0; j < DIFF_LEN; j++) {
       char c = diff_line[j];
@@ -338,5 +371,8 @@ void loop() {
     delayMicroseconds(SHIFT_DELAY_US);
     digitalWrite(PUSH, LOW);
     delayMicroseconds(SHIFT_DELAY_US);
+
+    // Pwm is 500 Hz, so make sure we get a few cycles for each segment
+    if (i != 6) delay(2);
   }
 }
