@@ -1,5 +1,6 @@
 #include <Wire.h>
 #include <RTClib.h>
+#include <EEPROM.h>
 
 // Constants
 #define TOP_LEN 14
@@ -31,6 +32,7 @@
 #define BRIGHTNESS_ADJ PIN_A0
 
 // Values
+// You would think i'm the secretary of state with how much state this simple clock has
 const DateTime compile_time(__DATE__, __TIME__);
 static DateTime now;
 static DateTime travel_time = compile_time;
@@ -49,8 +51,24 @@ static uint8_t cursor_row = 0;
 // 0 is rightmost side
 static uint8_t cursor_column = 0;
 
+static bool was_pressed = false;
+
 
 RTC_DS1307 rtc; // DS1307 I2C address
+
+void write_date_to_eeprom(DateTime date) {
+  // TODO Redundancy
+  EEPROM.put <uint32_t> (0, date.unixtime());
+}
+
+DateTime read_date_from_eeprom() {
+  uint32_t utime;
+  EEPROM.get <uint32_t> (0, utime);
+  if (utime == 0) {
+    return DateTime(compile_time);
+  }
+  return DateTime(utime);
+}
 
 void setup() {
   Serial.begin(9600);
@@ -113,8 +131,11 @@ void setup() {
   now = rtc.now();
   difference = now - compile_time;
 
+  // Read the set time from EEPROM. If it is not set, this function returns the compile time
+  travel_time = read_date_from_eeprom();
+
   // Uncomment the following lines to set the time and date
-  rtc.adjust(compile_time);
+  //rtc.adjust(compile_time);
 }
 
 void write_bit(uint8_t bit, uint8_t clock_pin) {
@@ -137,16 +158,16 @@ void write_segment(uint8_t segment_num) {
   }
 }
 
-const bool ZERO_SEGMENTS[7] = {true, true, true, true, true, true, false};
-const bool ONE_SEGMENTS[7] = {false, true, true, false, false, false, false};
-const bool TWO_SEGMENTS[7] = {true, true, false, true, true, false, true};
-const bool THREE_SEGMENTS[7] = {true, true, true, true, false, false, true};
-const bool FOUR_SEGMENTS[7] = {false, true, true, false, false, true, true};
-const bool FIVE_SEGMENTS[7] = {true, false, true, true, false, true, true};
-const bool SIX_SEGMENTS[7] = {false, false, true, true, true, true, true};
-const bool SEVEN_SEGMENTS[7] = {true, true, true, false, false, false, false};
-const bool EIGHT_SEGMENTS[7] = {true, true, true, true, true, true, true};
-const bool NINE_SEGMENTS[7] = {true, true, true, false, false, true, true};
+const bool ZERO_SEGMENTS[7] PROGMEM = {true, true, true, true, true, true, false};
+const bool ONE_SEGMENTS[7] PROGMEM = {false, true, true, false, false, false, false};
+const bool TWO_SEGMENTS[7] PROGMEM = {true, true, false, true, true, false, true};
+const bool THREE_SEGMENTS[7] PROGMEM = {true, true, true, true, false, false, true};
+const bool FOUR_SEGMENTS[7] PROGMEM = {false, true, true, false, false, true, true};
+const bool FIVE_SEGMENTS[7] PROGMEM = {true, false, true, true, false, true, true};
+const bool SIX_SEGMENTS[7] PROGMEM = {false, false, true, true, true, true, true};
+const bool SEVEN_SEGMENTS[7] PROGMEM = {true, true, true, false, false, false, false};
+const bool EIGHT_SEGMENTS[7] PROGMEM = {true, true, true, true, true, true, true};
+const bool NINE_SEGMENTS[7] PROGMEM = {true, true, true, false, false, true, true};
 
 bool c_has_segment(char c, char index) {
 
@@ -181,6 +202,8 @@ bool c_has_segment(char c, char index) {
   return false;
 }
 
+const uint8_t daysInMonth[] PROGMEM = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
+
 void change_row_by(int8_t change) {
   DateTime *row;
   switch(cursor_row) {
@@ -196,66 +219,119 @@ void change_row_by(int8_t change) {
   default:
     return;
   }
-  TimeSpan adjust_by;
   switch(cursor_column) {
   case 0:
     // Seconds ones place
-    adjust_by = TimeSpan(0, 0, 0, change);
+    *row = *row + TimeSpan(0, 0, 0, change);
     break;
   case 1:
     // Seconds tens place
-    adjust_by = TimeSpan(0, 0, 0, 10 * change);
+    *row = *row + TimeSpan(0, 0, 0, 10 * change);
     break;
   case 2:
     // Minutes ones place
-    adjust_by = TimeSpan(0, 0, change, 0);
+    *row = *row + TimeSpan(0, 0, change, 0);
     break;
   case 3:
     // Minutes tens place
-    adjust_by = TimeSpan(0, 0, 10 * change, 0);
+    *row = *row + TimeSpan(0, 0, 10 * change, 0);
     break;
   case 4:
     // Hours ones place
-    adjust_by = TimeSpan(0, change, 0, 0);
+    *row = *row + TimeSpan(0, change, 0, 0);
     break;
   case 5:
     // Hours tens place
-    adjust_by = TimeSpan(0, 10 * change, 0, 0);
+    *row = *row + TimeSpan(0, 10 * change, 0, 0);
     break;
   case 6:
     // Days ones place
-    adjust_by = TimeSpan(change, 0, 0, 0);
+    *row = *row + TimeSpan(change, 0, 0, 0);
     break;
   case 7:
     // Days tens place
-    adjust_by = TimeSpan(10 * change, 0, 0, 0);
+    *row = *row + TimeSpan(10 * change, 0, 0, 0);
     break;
   case 8:
     if (cursor_row == 2) {
       // Days hundreds place
-      adjust_by = TimeSpan(100 * (int16_t)change, 0, 0, 0);
+      *row = *row + TimeSpan(100 * (int16_t)change, 0, 0, 0);
       break;
     }
     else {
       // Months ones place
-      
+      // TODO Leap years may change feb 29
+      uint8_t day_adjust = row->day();
+      uint8_t newmonth = row->month() + change;
+      if (newmonth > 12) {
+        newmonth = 1;
+      }
+      if (newmonth < 1) {
+        newmonth = 12;
+      }
+      if (day_adjust > daysInMonth[newmonth - 1]) {
+        day_adjust = daysInMonth[newmonth - 1];
+      }
+      *row = DateTime(row->year(), newmonth, day_adjust, row->hour(), row->minute(), row->second());
       return;
     }
     break;
   case 9:
     if (cursor_row == 2) {
       // Days thousands place
-      adjust_by = TimeSpan(1000 * (int16_t)change, 0, 0, 0);
+      *row = *row + TimeSpan(1000 * (int16_t)change, 0, 0, 0);
       break;
     }
     else {
       // Months tens place
-      
+      // Dont need this for now
       return;
     }
     break;
+  case 10:
+    // Years ones place
+    // TODO Leap years may change feb 29
+    uint16_t newyear = row->year() + change;
+    if (newyear > 2099) {
+      newyear = 2099;
+    }
+    if (newyear < 2000) {
+      newyear = 2000;
+    }
+    *row = DateTime(newyear, row->month(), row->day(), row->hour(), row->minute(), row->second());
+    return;
+  case 11:
+    // Years tens place
+    // TODO Leap years may change feb 29
+    uint16_t newyear = row->year() + 10 * change;
+    if (newyear > 2099) {
+      newyear = 2099;
+    }
+    if (newyear < 2000) {
+      newyear = 2000;
+    }
+    *row = DateTime(newyear, row->month(), row->day(), row->hour(), row->minute(), row->second());
+    return;
+  case 12:
+    // Years hundreds place
+    // Unsupported by the library
+  case 13:
+    // Years thousands place
+    // Unsupported by the library
+  default:
+    // years > 9999 are not supported
+    return;
   }
-  *row = *row + adjust_by;
+
+  // Update saved values
+  if (cursor_row == 1) {
+    // Constant row, write to EEPROM
+    write_date_to_eeprom(*row);
+  }
+  else {
+    // Write to RTC
+    rtc.adjust(*row);
+  }
 }
 
 void loop() {
@@ -264,41 +340,53 @@ void loop() {
 
   analogWrite(OUTPUT_ENABLE, brightness/4);
 
-  /*
+  
   is_12_hr = digitalRead(MODE) == LOW;
   is_setting_time = digitalRead(SET_ENABLE) == HIGH;
   if (is_setting_time) {
+    // TODO Button holding & debounce
+
     bool inc = digitalRead(INC) == LOW;
     bool dec = digitalRead(DEC) == LOW;
     bool up = digitalRead(UP) == LOW;
     bool down = digitalRead(DOWN) == DOWN;
     bool left = digitalRead(LEFT) == LEFT;
     bool right = digitalRead(RIGHT) == RIGHT;
-    if (up && cursor_row != 0) {
-      cursor_row--;
-    }
-    else if (down && cursor_row != 2) {
-      cursor_row++;
-      if (cursor_row == 2 && cursor_column >= DIFF_LEN) {
-        cursor_column = DIFF_LEN - 1;
+    
+    if (!was_pressed) {
+      if (up && cursor_row != 0) {
+        cursor_row--;
+      }
+      else if (down && cursor_row != 2) {
+        cursor_row++;
+        if (cursor_row == 2 && cursor_column >= DIFF_LEN) {
+          cursor_column = DIFF_LEN - 1;
+        }
+      }
+      else if (left && ((cursor_column < BOTTOM_LEN - 1 && cursor_row < 2) || (cursor_column < DIFF_LEN - 1 && cursor_row == 2))) {
+        cursor_column++;
+      }
+      else if (right && cursor_column < 0) {
+        cursor_column--;
+      }
+
+      else if (inc) {
+       change_row_by(1);
+      }
+      else if (dec) {
+        change_row_by(-1);
       }
     }
-    else if (left && ((cursor_column < BOTTOM_LEN - 1 && cursor_row < 2) || (cursor_column < DIFF_LEN - 1 && cursor_row == 2))) {
-      cursor_column++;
-    }
-    else if (right && cursor_column < 0) {
-      cursor_column--;
-    }
 
-    else if (inc) {
-      change_row_by(1);
+    if (inc || dec || up || down || left || right ) {
+      was_pressed = true;
     }
-    else if (dec) {
-      change_row_by(-1);
+    else {
+      was_pressed = false;
     }
 
 
-  }*/
+  }
   
   bool is_12hr = digitalRead(MODE);
   bool is_top_pm = false;
@@ -313,9 +401,11 @@ void loop() {
   uint8_t top_month = now.month();
   uint8_t top_day = now.day();
   uint8_t top_hour = now.hour();
+  if (is_12_hr && top_hour < 24 && top_hour > 11) {
+    is_top_pm = true;
+  }
   if (is_12_hr && top_hour > 12) {
     top_hour -= 12;
-    is_top_pm = true;
   }
   uint8_t top_minute = now.minute();
   uint8_t top_second = now.second();
@@ -325,9 +415,11 @@ void loop() {
   uint8_t bottom_month = second_time.month();
   uint8_t bottom_day = second_time.day();
   uint8_t bottom_hour = second_time.hour();
+  if (is_12_hr && bottom_hour < 24 && bottom_hour > 11) {
+    is_bottom_pm = true;
+  }
   if (is_12_hr && bottom_hour > 12) {
     bottom_hour -= 12;
-    is_bottom_pm = true;
   }
   uint8_t bottom_minute = second_time.minute();
   uint8_t bottom_second = second_time.second();
