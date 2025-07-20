@@ -45,7 +45,7 @@ static char diff_line[DIFF_LEN + 1] = { ' ' };
 // State
 static bool is_setting_time = false;
 static bool is_12_hr = false;
-static uint8_t cursor_line;
+static uint8_t cursor_line = 0;
 // 0 is top row, 1 is middle row, 2 is difference row
 static uint8_t cursor_row = 0;
 // 0 is rightmost side
@@ -105,19 +105,6 @@ void setup() {
   uint8_t bottom_minute = second_time.minute();
   uint8_t bottom_second = second_time.second();
 
-  sprintf(bottom_line, "%4d%2d%2d%2d%2d%2d\0", bottom_year, bottom_month, bottom_day, bottom_hour, bottom_minute, bottom_second);
-  Serial.write(bottom_line);
-  Serial.write("\n");
-
-  for (int i = 0; i < 7; i++) {
-    for (int j = 0; j < BOTTOM_LEN; j++) {
-      char c = bottom_line[j];
-      bool is_lit = c_has_segment(c, i);
-      Serial.print(is_lit);
-    }
-    Serial.print("\n");
-  }
-
   while (!Serial) {
     ; // Wait for serial port to connect (for safety)
   }
@@ -171,6 +158,10 @@ const bool NINE_SEGMENTS[7] PROGMEM = {true, true, true, false, false, true, tru
 
 bool c_has_segment(char c, char index) {
 
+  if (index >= 7) {
+    return false;
+  }
+
   if (c == ' ' || c < 48) {
     return false;
   }
@@ -206,6 +197,7 @@ const uint8_t daysInMonth[] PROGMEM = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 
 
 void change_row_by(int8_t change) {
   DateTime *row;
+  uint16_t newyear;
   switch(cursor_row) {
   case 0:
     row = &now;
@@ -291,7 +283,7 @@ void change_row_by(int8_t change) {
   case 10:
     // Years ones place
     // TODO Leap years may change feb 29
-    uint16_t newyear = row->year() + change;
+    newyear = row->year() + change;
     if (newyear > 2099) {
       newyear = 2099;
     }
@@ -303,7 +295,7 @@ void change_row_by(int8_t change) {
   case 11:
     // Years tens place
     // TODO Leap years may change feb 29
-    uint16_t newyear = row->year() + 10 * change;
+    newyear = row->year() + 10 * change;
     if (newyear > 2099) {
       newyear = 2099;
     }
@@ -349,9 +341,9 @@ void loop() {
     bool inc = digitalRead(INC) == LOW;
     bool dec = digitalRead(DEC) == LOW;
     bool up = digitalRead(UP) == LOW;
-    bool down = digitalRead(DOWN) == DOWN;
-    bool left = digitalRead(LEFT) == LEFT;
-    bool right = digitalRead(RIGHT) == RIGHT;
+    bool down = digitalRead(DOWN) == LOW;
+    bool left = digitalRead(LEFT) == LOW;
+    bool right = digitalRead(RIGHT) == LOW;
     
     if (!was_pressed) {
       if (up && cursor_row != 0) {
@@ -363,7 +355,7 @@ void loop() {
           cursor_column = DIFF_LEN - 1;
         }
       }
-      else if (left && ((cursor_column < BOTTOM_LEN - 1 && cursor_row < 2) || (cursor_column < DIFF_LEN - 1 && cursor_row == 2))) {
+      else if ((left && (cursor_column < BOTTOM_LEN - 1 && cursor_row < 2) || (cursor_column < DIFF_LEN - 1 && cursor_row == 2))) {
         cursor_column++;
       }
       else if (right && cursor_column < 0) {
@@ -445,16 +437,25 @@ void loop() {
     for (int j = 0; j < DIFF_LEN; j++) {
       char c = diff_line[j];
       bool is_lit = c_has_segment(c, i);
+      if (cursor_line == 2 && (DIFF_LEN - 1) - j == cursor_column && is_setting_time && i == 7) {
+        is_lit = true;
+      }
       write_bit(is_lit, DIGIT_CLK);
     }
     for (int j = 0; j < BOTTOM_LEN; j++) {
       char c = bottom_line[j];
       bool is_lit = c_has_segment(c, i);
+      if (cursor_line == 1 && (BOTTOM_LEN - 1) - j == cursor_column && is_setting_time && i == 7) {
+        is_lit = true;
+      }
       write_bit(is_lit, DIGIT_CLK);
     }
     for (int j = 0; j < TOP_LEN; j++) {
       char c = top_line[j];
       bool is_lit = c_has_segment(c, i);
+      if (cursor_line == 0 && (TOP_LEN - 1) - j == cursor_column && is_setting_time && i == 7) {
+        is_lit = true;
+      }
       write_bit(is_lit, DIGIT_CLK);
     }
 
@@ -465,6 +466,6 @@ void loop() {
     delayMicroseconds(SHIFT_DELAY_US);
 
     // Pwm is 500 Hz, so make sure we get a few cycles for each segment
-    if (i != 6) delay(2);
+    if (i != 7) delay(2);
   }
 }
