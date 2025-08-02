@@ -35,12 +35,13 @@
 // You would think i'm the secretary of state with how much state this simple clock has
 const DateTime compile_time(__DATE__, __TIME__);
 static volatile DateTime now;
-static volatile DateTime travel_time = DateTime(compile_time);
+static volatile DateTime new_time;
+static volatile DateTime travel_time = compile_time;
 static volatile TimeSpan difference;
 
-static volatile char top_line[TOP_LEN + 1] = { '\0' };
-static volatile char bottom_line[BOTTOM_LEN + 1] = { '\0' };
-static volatile char diff_line[DIFF_LEN + 1] = { '\0' };
+static volatile char top_line[TOP_LEN + 1] = { 0 };
+static volatile char bottom_line[BOTTOM_LEN + 1] = { 0 };
+static volatile char diff_line[DIFF_LEN + 1] = { 0 };
 
 static volatile int display_counter = 0;
 static volatile uint8_t display_current_segment = 0;
@@ -55,6 +56,8 @@ static volatile uint8_t cursor_column = 0;
 
 static volatile bool is_top_pm = false;
 static volatile bool is_bottom_pm = false;
+
+static volatile bool rtc_needs_adjusting = false;
 
 // Blinking
 static volatile bool cursor_is_lit = true;
@@ -86,7 +89,16 @@ static volatile int right_pressed_time = 0;
 
 static volatile RTC_DS1307 rtc; // DS1307 I2C address
 
-void write_date_to_eeprom(DateTime date) {
+// Bruh
+// volatile DateTime operator=(const DateTime& other) {
+//   return *this;
+// }
+
+// volatile DateTime operator=(const volatile DateTime& other) {
+//   return *this;
+// }
+
+void write_date_to_eeprom(DateTime& date) {
   // TODO Redundancy
   EEPROM.put <uint32_t> (0, date.unixtime());
 }
@@ -95,7 +107,7 @@ DateTime read_date_from_eeprom() {
   uint32_t utime;
   EEPROM.get <uint32_t> (0, utime);
   if (utime == 0) {
-    return DateTime(compile_time);
+    return compile_time;
   }
   return DateTime(utime);
 }
@@ -107,13 +119,12 @@ void change_row_by(int8_t change) {
   uint16_t newyear;
   switch(cursor_row) {
   case 0:
-    row = &now;
+  case 2:
+    new_time = DateTime(&now);
+    row = &new_time;
     break;
   case 1:
     row = &travel_time;
-    break;
-  case 2:
-    row = &now;
     break;
   default:
     return;
@@ -229,7 +240,9 @@ void change_row_by(int8_t change) {
   }
   else {
     // Write to RTC
-    rtc.adjust(*row);
+    // Maybe bad to use I2C inside an ISR
+    //rtc.adjust(*row);
+    rtc_needs_adjusting = true;
   }
 }
 
@@ -257,7 +270,7 @@ void down() {
 }
 
 void left() {
-  if ((cursor_row == 0 && cursor_column < TOP_LEN - 1) || (cursor_row == 0 && cursor_column < BOTTOM_LEN - 1) || (cursor_row == 0 && cursor_column < DIFF_LEN - 1)) {
+  if ((cursor_row == 0 && cursor_column < TOP_LEN - 1) || (cursor_row == 1 && cursor_column < BOTTOM_LEN - 1) || (cursor_row == 2 && cursor_column < DIFF_LEN - 1)) {
     cursor_column++;
   }
 }
@@ -346,24 +359,39 @@ void display_logic() {
   for (int j = 0; j < DIFF_LEN; j++) {
     char c = diff_line[j];
     bool is_lit = c_has_segment(c, display_current_segment);
-    if (cursor_row == 2 && (DIFF_LEN - 1) - j == cursor_column && is_setting_time && !cursor_is_lit) {
-      is_lit = false;
+    if (cursor_row == 2 && (DIFF_LEN - 1) - j == cursor_column && is_setting_time) {
+      if (c == ' ' && display_current_segment == 7) {
+        is_lit = true;
+      }
+      if (!cursor_is_lit) {
+        is_lit = false;
+      }
     }
     write_bit(is_lit, DIGIT_CLK);
   }
   for (int j = 0; j < BOTTOM_LEN; j++) {
     char c = bottom_line[j];
     bool is_lit = c_has_segment(c, display_current_segment);
-    if (cursor_row == 1 && (BOTTOM_LEN - 1) - j == cursor_column && is_setting_time && !cursor_is_lit) {
-      is_lit = false;
+    if (cursor_row == 1 && (BOTTOM_LEN - 1) - j == cursor_column && is_setting_time) {
+      if (c == ' ' && display_current_segment == 7) {
+        is_lit = true;
+      }
+      if (!cursor_is_lit) {
+        is_lit = false;
+      }
     }
     write_bit(is_lit, DIGIT_CLK);
   }
   for (int j = 0; j < TOP_LEN; j++) {
     char c = top_line[j];
     bool is_lit = c_has_segment(c, display_current_segment);
-    if (cursor_row == 0 && (TOP_LEN - 1) - j == cursor_column && is_setting_time && !cursor_is_lit) {
-      is_lit = false;
+    if (cursor_row == 0 && (TOP_LEN - 1) - j == cursor_column && is_setting_time) {
+      if (c == ' ' && display_current_segment == 7) {
+        is_lit = true;
+      }
+      if (!cursor_is_lit) {
+        is_lit = false;
+      }
     }
     write_bit(is_lit, DIGIT_CLK);
   }
@@ -392,14 +420,14 @@ ISR(TIMER2_OVF_vect) {
 
 // number of 1ms intervals
 const int BUTTON_GRACE_PERIOD = 2 * 1000; // 2 seconds
-const int BUTTON_REPRESS_PERIOD = 1000 / 2; // 0.5 seconds
+const int BUTTON_REPRESS_PERIOD = 1000 / 4; // 0.5 seconds
 
 // number of 1ms intervals
-const int BUTTON_BLINK_PERIOD = 1000 / 2; // 0.5 seconds (really this is half of the period)
+const int BUTTON_BLINK_PERIOD = 1000 / 4; // 0.5 seconds (really this is half of the period)
 
 bool counter_logic(const volatile bool *is_pressed, volatile int *counter) {
   if (*is_pressed) {
-    if (*counter ` (BUTTON_GRACE_PERIOD + BUTTON_REPRESS_PERIOD)) {
+    if (*counter < (BUTTON_GRACE_PERIOD + BUTTON_REPRESS_PERIOD)) {
       *counter += 1;
     }
     else {
@@ -416,29 +444,31 @@ bool counter_logic(const volatile bool *is_pressed, volatile int *counter) {
 ISR(TIMER2_COMPA_vect) {
   OCR2A += 250; // Increment COMPA to keep uniform time
   // Increment counters
-  if (counter_logic(&inc_is_pressed, &inc_pressed_time)) {
-    // Increment
-    inc();
-  }
-  if (counter_logic(&dec_is_pressed, &dec_pressed_time)) {
-    // Decrement
-    dec();
-  }
-  if (counter_logic(&up_is_pressed, &up_pressed_time)) {
-    // Up
-    up();
-  }
-  if (counter_logic(&down_is_pressed, &down_pressed_time)) {
-    // Down
-    down();
-  }
-  if (counter_logic(&left_is_pressed, &left_pressed_time)) {
-    // Left
-    left();
-  }
-  if (counter_logic(&right_is_pressed, &right_pressed_time)) {
-    // Right
-    right();
+  if (is_setting_time) {
+    if (counter_logic(&inc_is_pressed, &inc_pressed_time)) {
+      // Increment
+      inc();
+    }
+    if (counter_logic(&dec_is_pressed, &dec_pressed_time)) {
+      // Decrement
+      dec();
+    }
+    if (counter_logic(&up_is_pressed, &up_pressed_time)) {
+      // Up
+      up();
+    }
+    if (counter_logic(&down_is_pressed, &down_pressed_time)) {
+      // Down
+      down();
+    }
+    if (counter_logic(&left_is_pressed, &left_pressed_time)) {
+      // Left
+      left();
+    }
+    if (counter_logic(&right_is_pressed, &right_pressed_time)) {
+      // Right
+      right();
+    }
   }
 
   if (cursor_blink_counter < BUTTON_BLINK_PERIOD) {
@@ -524,7 +554,7 @@ bool should_activate(const volatile bool *is_pressed, volatile bool *is_press_ha
     *is_press_handled = true;
     return true;
   }
-  else if (!dec_is_pressed) {
+  else if (!*is_pressed) {
     *counter = 0;
     *is_press_handled = false;
   }
@@ -574,10 +604,16 @@ void loop() {
   is_12_hr = digitalRead(MODE) == LOW;
 
   // Handle single button presses
-  handle_button_presses();
+  if (is_setting_time) {
+    handle_button_presses();
+  }
 
   // Refresh time data
   
+  if (rtc_needs_adjusting) {
+    rtc.adjust(&new_time);
+    rtc_needs_adjusting = false;
+  }
   now = rtc.now();
   const DateTime& second_time = &travel_time;
   difference = now - second_time;
@@ -729,18 +765,4 @@ void loop() {
 
   diff_line[8] = difference_second_tens;
   diff_line[9] = difference_second_ones;
-  
-  // noInterrupts();
-  // sprintf(top_line, "%4d%2d%2d%2d%02d%02d", top_year, top_month, top_day, top_hour, top_minute, top_second);
-  // interrupts();
-  // noInterrupts();
-  // sprintf(bottom_line, "%4d%2d%2d%2d%02d%02d", bottom_year, bottom_month, bottom_day, bottom_hour, bottom_minute, bottom_second);
-  // interrupts();
-  // noInterrupts();
-  // sprintf(diff_line, "%4d%2d%02d%02d", difference_days, difference_hours, difference_minutes, difference_seconds);
-  // interrupts();
-  // volatile int delay = 0;
-  // while (delay < 1000) {
-  //   delay++;
-  // }
 }
