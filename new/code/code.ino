@@ -58,6 +58,7 @@ static volatile bool is_top_pm = false;
 static volatile bool is_bottom_pm = false;
 
 static volatile bool rtc_needs_adjusting = false;
+static volatile bool eeprom_needs_writing = false;
 
 // Blinking
 static volatile bool cursor_is_lit = true;
@@ -104,12 +105,13 @@ void write_date_to_eeprom(DateTime& date) {
 }
 
 DateTime read_date_from_eeprom() {
-  uint32_t utime;
-  EEPROM.get <uint32_t> (0, utime);
-  if (utime == 0) {
-    return compile_time;
-  }
-  return DateTime(utime);
+  // uint32_t utime;
+  // EEPROM.get <uint32_t> (0, utime);
+  // if (utime == 0) {
+  //   return compile_time;
+  // }
+  // return DateTime(utime);
+  return compile_time;
 }
 
 const uint8_t daysInMonth[] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
@@ -236,7 +238,7 @@ void change_row_by(int8_t change) {
   // Update saved values
   if (cursor_row == 1) {
     // Constant row, write to EEPROM
-    write_date_to_eeprom(*row);
+    eeprom_needs_writing = true;
   }
   else {
     // Write to RTC
@@ -520,14 +522,14 @@ void setup() {
   // TCNT0 = 0;            // Timer Preloading
   // TIMSK0 |= B00000001;  // Enable Timer Overflow Interrupt
 
-  const DateTime& second_time = &travel_time;
+  // const DateTime& second_time = &travel_time;
 
-  uint16_t bottom_year = second_time.year();
-  uint8_t bottom_month = second_time.month();
-  uint8_t bottom_day = second_time.day();
-  uint8_t bottom_hour = second_time.hour();
-  uint8_t bottom_minute = second_time.minute();
-  uint8_t bottom_second = second_time.second();
+  // uint16_t bottom_year = second_time.year();
+  // uint8_t bottom_month = second_time.month();
+  // uint8_t bottom_day = second_time.day();
+  // uint8_t bottom_hour = second_time.hour();
+  // uint8_t bottom_minute = second_time.minute();
+  // uint8_t bottom_second = second_time.second();
 
   while (!Serial) {
     ; // Wait for serial port to connect (for safety)
@@ -609,6 +611,11 @@ void loop() {
   }
 
   // Refresh time data
+
+  if (eeprom_needs_writing) {
+    write_date_to_eeprom(&travel_time);
+    eeprom_needs_writing = false;
+  }
   
   if (rtc_needs_adjusting) {
     rtc.adjust(&new_time);
