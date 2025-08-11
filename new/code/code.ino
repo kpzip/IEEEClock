@@ -29,13 +29,16 @@
 #define SET_ENABLE 6
 #define MODE 7
 
+#define EEPROM_SET_ADDR 0x10
+#define EEPROM_SET_VALUE 0xAA
+
 #define BRIGHTNESS_ADJ PIN_A0
 
 // Values
 // You would think i'm the secretary of state with how much state this simple clock has
 const DateTime compile_time(__DATE__, __TIME__);
 static volatile DateTime now;
-static volatile DateTime new_time;
+static volatile DateTime new_time = compile_time;
 static volatile DateTime travel_time = compile_time;
 static volatile TimeSpan difference;
 
@@ -90,39 +93,39 @@ static volatile int right_pressed_time = 0;
 
 static volatile RTC_DS1307 rtc; // DS1307 I2C address
 
-// Bruh
-// volatile DateTime operator=(const DateTime& other) {
-//   return *this;
-// }
+// Bruh. I hate copy constructors
+DateTime copy_to_non_volatile(volatile DateTime *dt) {
+  return DateTime(dt->year(), dt->month(), dt->day(), dt->hour(), dt->minute(), dt->second());
+}
 
-// volatile DateTime operator=(const volatile DateTime& other) {
-//   return *this;
-// }
-
-void write_date_to_eeprom(DateTime& date) {
+void write_date_to_eeprom(volatile DateTime *date) {
   // TODO Redundancy
-  EEPROM.put <uint32_t> (0, date.unixtime());
+  uint32_t time = date->unixtime();
+  EEPROM.put <uint32_t> (0, time);
+  if (EEPROM.read(EEPROM_SET_ADDR) != EEPROM_SET_VALUE) {
+    EEPROM.write(EEPROM_SET_ADDR, EEPROM_SET_VALUE);
+  }
 }
 
 DateTime read_date_from_eeprom() {
-  // uint32_t utime;
-  // EEPROM.get <uint32_t> (0, utime);
-  // if (utime == 0) {
-  //   return compile_time;
-  // }
-  // return DateTime(utime);
-  return compile_time;
+  if (EEPROM.read(EEPROM_SET_ADDR) != EEPROM_SET_VALUE) {
+    write_date_to_eeprom(&compile_time);
+    return compile_time;
+  }
+  uint32_t utime;
+  EEPROM.get <uint32_t> (0, utime);
+  return DateTime(utime);
 }
 
 const uint8_t daysInMonth[] = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 
 void change_row_by(int8_t change) {
-  DateTime *row;
+  volatile DateTime *row;
   uint16_t newyear;
   switch(cursor_row) {
   case 0:
   case 2:
-    new_time = DateTime(&now);
+    new_time = copy_to_non_volatile(&now);
     row = &new_time;
     break;
   case 1:
@@ -203,7 +206,7 @@ void change_row_by(int8_t change) {
   case 10:
     // Years ones place
     // TODO Leap years may change feb 29
-    newyear = row->year() + change;
+    newyear = (uint16_t) ((int16_t) row->year() + (int16_t) change);
     if (newyear > 2099) {
       newyear = 2099;
     }
@@ -215,7 +218,7 @@ void change_row_by(int8_t change) {
   case 11:
     // Years tens place
     // TODO Leap years may change feb 29
-    newyear = row->year() + 10 * change;
+    newyear = (uint16_t) ((int16_t) row->year() + 10 * (int16_t) change);
     if (newyear > 2099) {
       newyear = 2099;
     }
@@ -548,7 +551,8 @@ void setup() {
   travel_time = read_date_from_eeprom();
   
   // Uncomment the following lines to set the time and date
-  //rtc.adjust(compile_time);
+  DateTime local = copy_to_non_volatile(&now);
+  rtc.adjust(local);
 }
 
 bool should_activate(const volatile bool *is_pressed, volatile bool *is_press_handled, volatile int *counter) {
@@ -618,11 +622,12 @@ void loop() {
   }
   
   if (rtc_needs_adjusting) {
-    rtc.adjust(&new_time);
+    DateTime local = copy_to_non_volatile(&new_time);
+    rtc.adjust(local);
     rtc_needs_adjusting = false;
   }
   now = rtc.now();
-  const DateTime& second_time = &travel_time;
+  const DateTime second_time = copy_to_non_volatile(&travel_time);
   difference = now - second_time;
 
   // Top row led values
@@ -633,8 +638,19 @@ void loop() {
   if (is_12_hr && top_hour < 24 && top_hour > 11) {
     is_top_pm = true;
   }
+  else {
+    is_top_pm = false;
+  }
   if (is_12_hr && top_hour > 12) {
     top_hour -= 12;
+  }
+  if (top_hour == 0) {
+    if (is_12_hr) {
+      top_hour = 12;
+    }
+    else {
+      top_hour = 24;
+    }
   }
   uint8_t top_minute = now.minute();
   uint8_t top_second = now.second();
@@ -689,8 +705,19 @@ void loop() {
   if (is_12_hr && bottom_hour < 24 && bottom_hour > 11) {
     is_bottom_pm = true;
   }
+  else {
+    is_bottom_pm = false;
+  }
   if (is_12_hr && bottom_hour > 12) {
     bottom_hour -= 12;
+  }
+  if (bottom_hour == 0) {
+    if (is_12_hr) {
+      bottom_hour = 12;
+    }
+    else {
+      bottom_hour = 24;
+    }
   }
   uint8_t bottom_minute = second_time.minute();
   uint8_t bottom_second = second_time.second();
