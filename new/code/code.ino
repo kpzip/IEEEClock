@@ -188,7 +188,7 @@ void change_row_by(int8_t change) {
         day_adjust = daysInMonth[newmonth - 1];
       }
       *row = DateTime(row->year(), newmonth, day_adjust, row->hour(), row->minute(), row->second());
-      return;
+      break;
     }
     break;
   case 9:
@@ -200,7 +200,7 @@ void change_row_by(int8_t change) {
     else {
       // Months tens place
       // Dont need this for now
-      return;
+      break;
     }
     break;
   case 10:
@@ -214,7 +214,7 @@ void change_row_by(int8_t change) {
       newyear = 2000;
     }
     *row = DateTime(newyear, row->month(), row->day(), row->hour(), row->minute(), row->second());
-    return;
+    break;
   case 11:
     // Years tens place
     // TODO Leap years may change feb 29
@@ -226,7 +226,7 @@ void change_row_by(int8_t change) {
       newyear = 2000;
     }
     *row = DateTime(newyear, row->month(), row->day(), row->hour(), row->minute(), row->second());
-    return;
+    break;
   case 12:
     // Years hundreds place
     // Unsupported by the library
@@ -297,10 +297,20 @@ const bool SEVEN_SEGMENTS[7] = {true, true, true, false, false, false, false};
 const bool EIGHT_SEGMENTS[7] = {true, true, true, true, true, true, true};
 const bool NINE_SEGMENTS[7] = {true, true, true, false, false, true, true};
 
+const bool E_SEGMENTS[7] = {true, false, false, true, true, true, true};
+const bool R_SEGMENTS[7] = {false, false, false, false, true, false, true};
+
 bool c_has_segment(char c, uint8_t index) {
 
   if (index >= 7) {
     return false;
+  }
+
+  if (c == 'e') {
+    return E_SEGMENTS[index];
+  }
+  if (c == 'r') {
+    return R_SEGMENTS[index];
   }
 
   if (c == ' ' || c < 48) {
@@ -486,6 +496,34 @@ ISR(TIMER2_COMPA_vect) {
 
 }
 
+void error() {
+
+  TCCR2A = 0;           // Init Timer2A
+  TCCR2B = 0;           // Init Timer2B
+  TCCR2B |= B00000100;  // Prescaler = 64
+  OCR2A = 250;          // Timer Compare2A Register
+  TIMSK2 |= B00000011;  // Enable Timer COMPA and OVF Interrupt
+
+  inc_is_pressed = false;
+  dec_is_pressed = false;
+  up_is_pressed = false;
+  down_is_pressed = false;
+  left_is_pressed = false;
+  right_is_pressed = false;
+  is_setting_time = false;
+
+  top_line[0] = 'e';
+  top_line[1] = 'r';
+  top_line[2] = 'r';
+  //memset(&top_line[3], ' ', TOP_LEN - 3);
+  //memset(bottom_line, ' ', BOTTOM_LEN);
+  //memset(diff_line, ' ', DIFF_LEN);
+
+  while (true) {
+    ;
+  }
+}
+
 void setup() {
   Serial.begin(9600);
 
@@ -540,7 +578,7 @@ void setup() {
   if(!rtc.begin()) {
     Serial.println("Couldn't find RTC");
     Serial.flush();
-    abort();
+    error();
   }
 
   // Init
@@ -550,9 +588,12 @@ void setup() {
   // Read the set time from EEPROM. If it is not set, this function returns the compile time
   travel_time = read_date_from_eeprom();
   
+  if (!rtc.isrunning()) {
+    rtc.adjust(compile_time);
+  }
   // Uncomment the following lines to set the time and date
-  DateTime local = copy_to_non_volatile(&now);
-  rtc.adjust(local);
+  // DateTime local = copy_to_non_volatile(&now);
+  // rtc.adjust(local);
 }
 
 bool should_activate(const volatile bool *is_pressed, volatile bool *is_press_handled, volatile int *counter) {
@@ -628,7 +669,8 @@ void loop() {
   }
   now = rtc.now();
   const DateTime second_time = copy_to_non_volatile(&travel_time);
-  difference = now - second_time;
+  DateTime local_now = copy_to_non_volatile(&now); // bruh
+  difference = local_now > second_time ? now - second_time : second_time - local_now;
 
   // Top row led values
   uint16_t top_year = now.year();
